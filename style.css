@@ -1,114 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-
-body, html {
+/* General Styles */
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow-x: hidden;
-    font-family: "Black Ops One", system-ui;
+    box-sizing: border-box;
 }
 
-/* Video Background */
-.bg-video video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;  
-    height: 100vh; 
-    object-fit: cover; 
-    z-index: -2;
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: white;
 }
 
-/* Dark overlay for better visibility */
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.35);
-    z-index: -1;
-}
-
-/* Header (logos + nav) */
-.header {
-    position: absolute;
-    top: 0;
-    width: 100%;
+/* Header */
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    z-index: 1;
+    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
 }
 
-/* Logos */
-.logo-left img, 
-.logo-right img {
-    width: 70px;
-    height: 70px;
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
 }
 
-/* Nav Links */
-.nav-links {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+.logo img:hover {
+    transform: scale(1.05);
 }
 
-.nav-links ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 40px;
+nav ul {
     list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.nav-links ul li a {
-    font-size: 20px;
+nav ul li a {
     color: white;
     text-decoration: none;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
-.nav-links ul li a:hover {
-    color: #ffd700;
+nav ul li a:hover {
+    color: #f0a500;
 }
 
-/* Hero Text Center */
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: rgb(243, 243, 244);
-    opacity: 0.9;
-    z-index: 1;
-    white-space: nowrap;
+.separator {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 60px; /* offset for fixed header */
 }
 
 .hero-text h1 {
-    font-size: 200px !important; /* Bigger STRATA'25 */
-    margin: 0;
+    font-size: 15vw; /* Responsive text size */
     line-height: 1;
+    white-space: nowrap;
 }
 
-/* Mobile */
+/* Mobile Adjustments */
 @media only screen and (max-width: 768px) {
-    .nav-links ul {
-        gap: 20px;
-    }
-    .nav-links ul li a {
-        font-size: 16px;
-    }
     .hero-text h1 {
-        font-size: 80px !important; /* Mobile-friendly size */
+        font-size: 18vw;
     }
-    .logo-left img, 
-    .logo-right img {
-        width: 50px;
-        height: 50px;
+    header {
+        padding: 10px 20px;
+    }
+    .logo img {
+        height: 40px;
     }
 }
