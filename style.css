@@ -1,4 +1,4 @@
-/* General Styles */
+/* Reset & Global */
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +7,19 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: #000;
     color: white;
+    overflow-x: hidden;
+}
+
+/* Video Background */
+#bg-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 /* Header */
@@ -20,7 +31,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1000;
 }
 
@@ -62,11 +73,13 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding-top: 60px; /* offset for fixed header */
+    padding-top: 60px;
+    text-align: center;
 }
 
 .hero-text h1 {
-    font-size: 15vw; /* Responsive text size */
+    font-size: 15vw;
+    font-weight: 800;
     line-height: 1;
     white-space: nowrap;
 }
