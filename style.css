@@ -16,6 +16,17 @@ body, html {
     width: 100vw;  
     height: 100vh; 
     object-fit: cover; 
+    z-index: -2;
+}
+
+/* Dark overlay for better visibility */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
     z-index: -1;
 }
 
@@ -28,6 +39,7 @@ body, html {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
+    z-index: 1;
 }
 
 /* Logos */
@@ -70,11 +82,17 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 300px;
-    color: rgb(243, 243, 244);
-    opacity: 0.85;
     text-align: center;
+    color: rgb(243, 243, 244);
+    opacity: 0.9;
+    z-index: 1;
     white-space: nowrap;
+}
+
+.hero-text h1 {
+    font-size: 200px !important; /* Bigger STRATA'25 */
+    margin: 0;
+    line-height: 1;
 }
 
 /* Mobile */
@@ -85,10 +103,8 @@ body, html {
     .nav-links ul li a {
         font-size: 16px;
     }
-    .hero-text {
-        font-size: 60px;
-        white-space: normal;
-        text-align: center;
+    .hero-text h1 {
+        font-size: 80px !important; /* Mobile-friendly size */
     }
     .logo-left img, 
     .logo-right img {
@@ -96,4 +112,3 @@ body, html {
         height: 50px;
     }
 }
-
