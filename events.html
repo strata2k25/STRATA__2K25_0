@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STRATA'25 - Events</title>
-    <link rel="stylesheet" href="Assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -19,6 +19,18 @@
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
+        }
+
+        /* Fallback background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a1929 0%, #1e3a8a 50%, #1e40af 100%);
+            z-index: -3;
         }
 
         /* Fixed background video */
@@ -44,15 +56,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 50, 100, 0);
-            transition: all 0.3s ease;
+            background: rgba(10, 25, 41, 0.3);
+            transition: all 0.5s ease;
             z-index: -1;
             pointer-events: none;
         }
 
         .video-overlay.scrolled {
-            background: rgba(0, 80, 150, 0.7);
-            backdrop-filter: blur(8px);
+            background: rgba(14, 58, 138, 0.7);
+            backdrop-filter: blur(12px);
         }
 
         /* Hero Section */
@@ -76,27 +88,44 @@
             font-size: 4rem;
             margin-bottom: 1rem;
             opacity: 0.9;
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px rgba(6, 182, 212, 0.4); }
+            to { text-shadow: 0 0 50px rgba(6, 182, 212, 0.6), 0 0 70px rgba(6, 182, 212, 0.3); }
         }
 
         .hero-subtitle {
             font-size: 1.5rem;
             font-weight: 300;
             margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         /* Fixed scroll indicator styling */
         .scroll-indicator {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
             animation: bounce 2s infinite;
             cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0;
+            background: rgba(14, 58, 138, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            padding: 15px 20px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.5);
+            transform: translateX(-50%) translateY(-5px);
         }
 
         .scroll-indicator:focus {
@@ -108,10 +137,10 @@
                 transform: translateY(0) translateX(-50%);
             }
             40% {
-                transform: translateY(-10px) translateX(-50%);
+                transform: translateY(-15px) translateX(-50%);
             }
             60% {
-                transform: translateY(-5px) translateX(-50%);
+                transform: translateY(-8px) translateX(-50%);
             }
         }
 
@@ -120,16 +149,18 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 50, 100, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(14, 58, 138, 0.2);
+            backdrop-filter: blur(15px);
             z-index: 1000;
             transition: all 0.3s ease;
             padding: 15px 0;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .navbar.scrolled {
-            background: rgba(0, 80, 150, 0.8);
-            backdrop-filter: blur(15px);
+            background: rgba(14, 58, 138, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom-color: rgba(59, 130, 246, 0.4);
         }
 
         .nav-content {
@@ -145,21 +176,28 @@
             width: 50px;
             height: 50px;
             cursor: pointer;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
 
         .logo img:hover {
-            opacity: 0.8;
+            opacity: 0.9;
+            transform: scale(1.05);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             list-style: none;
+            background: rgba(14, 58, 138, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 8px 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         .nav-links li {
-            margin: 0 20px;
+            margin: 0 15px;
         }
 
         .nav-links a {
@@ -169,28 +207,38 @@
             font-size: 16px;
             transition: all 0.3s ease;
             cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 15px;
+            display: block;
         }
 
         .nav-links a:hover {
-            color: #00ccff;
-            text-shadow: 0 0 10px #00ccff;
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.1);
+            text-shadow: 0 0 10px #06b6d4;
         }
 
         .separator {
-            color: white;
-            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 8px;
         }
 
         .dept-logo img {
             width: 50px;
             height: 50px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .dept-logo img:hover {
+            transform: scale(1.05);
         }
 
         /* Events Section */
         .events-section {
             min-height: 100vh;
             background: transparent;
-            padding: 100px 0 50px;
+            padding: 120px 0 60px;
             position: relative;
             z-index: 1;
         }
@@ -208,6 +256,7 @@
             font-size: 3rem;
             margin-bottom: 3rem;
             opacity: 0.9;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
         }
 
         .events-grid {
@@ -226,17 +275,17 @@
         }
 
         .event-card {
-            background: rgba(0, 100, 150, 0.3);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(0, 200, 255, 0.3);
-            transition: all 0.3s ease;
+            background: rgba(14, 58, 138, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             opacity: 0;
             transform: translateY(50px);
-            box-shadow: 0 8px 32px rgba(0, 200, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15);
         }
 
         .event-card.visible {
@@ -251,16 +300,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(0, 170, 255, 0.1), rgba(0, 136, 204, 0.1));
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(14, 116, 144, 0.1));
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
         }
 
         .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 170, 255, 0.3);
-            border-color: rgba(0, 200, 255, 0.6);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.3);
+            border-color: rgba(6, 182, 212, 0.6);
         }
 
         .event-card:hover::before {
@@ -270,21 +319,27 @@
         .event-image {
             width: 80px;
             height: 80px;
-            margin: 0 auto 20px;
-            background: linear-gradient(45deg, #00aaff, #0088cc);
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover .event-image {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
         }
 
         .event-title {
             color: white;
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: center;
         }
 
@@ -293,18 +348,18 @@
             font-size: 0.95rem;
             line-height: 1.6;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .event-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn-details, .btn-register {
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 25px;
             border: none;
             font-family: 'Poppins', sans-serif;
@@ -315,35 +370,69 @@
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-details {
-            background: rgba(0, 170, 255, 0.2);
+            background: rgba(6, 182, 212, 0.2);
             color: white;
-            border: 1px solid rgba(0, 200, 255, 0.4);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-details:hover::before {
+            left: 100%;
         }
 
         .btn-details:hover {
-            background: rgba(0, 170, 255, 0.3);
-            border-color: rgba(0, 200, 255, 0.6);
+            background: rgba(6, 182, 212, 0.3);
+            border-color: rgba(6, 182, 212, 0.6);
             transform: translateY(-2px);
             color: white;
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.2);
         }
 
         .btn-register {
-            background: linear-gradient(45deg, #00aaff, #0088cc);
+            background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
             color: white;
             font-weight: 600;
-            border: 1px solid rgba(0, 200, 255, 0.5);
+            border: 2px solid rgba(6, 182, 212, 0.6);
+            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.25);
+        }
+
+        .btn-register::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-register:hover::before {
+            left: 100%;
         }
 
         .btn-register:hover {
-            background: linear-gradient(45deg, #0088cc, #006699);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+            background: linear-gradient(135deg, #0891b2, #0e7490, #155e75);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.4);
             color: white;
             text-decoration: none;
+            border-color: rgba(6, 182, 212, 0.8);
         }
 
         /* Modal Styles */
@@ -354,8 +443,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 50, 100, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 25, 41, 0.9);
+            backdrop-filter: blur(15px);
             z-index: 2000;
         }
 
@@ -366,24 +455,24 @@
         }
 
         .modal-content {
-            background: rgba(0, 80, 150, 0.9);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 200, 255, 0.3);
-            border-radius: 20px;
+            background: rgba(14, 58, 138, 0.9);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 25px;
             padding: 40px;
             max-width: 600px;
             max-height: 80vh;
             overflow-y: auto;
             margin: 20px;
             position: relative;
-            box-shadow: 0 8px 32px rgba(0, 170, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .modal-title {
@@ -396,14 +485,21 @@
         .close-btn {
             background: none;
             border: none;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 2rem;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .close-btn:hover {
-            color: #00ccff;
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.1);
         }
 
         .modal-body {
@@ -413,9 +509,10 @@
         }
 
         .modal-body h4 {
-            color: #00ccff;
-            margin: 20px 0 10px 0;
+            color: #06b6d4;
+            margin: 25px 0 12px 0;
             font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .modal-body p {
@@ -423,14 +520,25 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1024px) {
+        @media (max-width: 1200px) {
             .events-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
             
             .events-grid-bottom {
                 grid-template-columns: 1fr;
                 max-width: 500px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
             }
         }
 
@@ -449,18 +557,32 @@
             
             .events-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             
             .nav-links li {
-                margin: 0 10px;
+                margin: 0 8px;
             }
             
             .nav-links a {
                 font-size: 14px;
+                padding: 6px 10px;
             }
 
             .nav-content {
                 padding: 0 15px;
+            }
+
+            .events-section {
+                padding: 100px 0 50px;
+            }
+
+            .event-card {
+                padding: 25px;
+            }
+
+            .nav-links {
+                padding: 6px 15px;
             }
         }
 
@@ -475,11 +597,40 @@
             
             .section-title {
                 font-size: 1.5rem;
+                margin-bottom: 2rem;
             }
 
             .modal-content {
-                padding: 20px;
-                margin: 10px;
+                padding: 25px;
+                margin: 15px;
+            }
+
+            .nav-links li {
+                margin: 0 5px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .logo img, .dept-logo img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .events-container {
+                padding: 0 15px;
+            }
+
+            .btn-details, .btn-register {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .scroll-indicator {
+                bottom: 30px;
+                padding: 12px 15px;
             }
         }
     </style>
@@ -508,7 +659,7 @@
                 <li><span class="separator">|</span></li>
                 <li><a href="#events">Events</a></li>
                 <li><span class="separator">|</span></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" onclick="showContact()">Contact</a></li>
             </ul>
             <div class="dept-logo">
                 <img src="logo (1).png" alt="Department Logo">
@@ -524,7 +675,7 @@
         </div>
         <div class="scroll-indicator" onclick="scrollToEvents()">
             <div style="font-size: 2rem;">⬇</div>
-            <div style="font-size: 0.9rem; margin-top: 5px;">Scroll to explore</div>
+            <div style="font-size: 0.9rem; margin-top: 5px; font-weight: 500;">Scroll to explore</div>
         </div>
     </section>
 
@@ -604,9 +755,9 @@
         </div>
     </div>
 
-    <script src="Assets/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Event details data (same as before)
+        // Event details data
         const eventDetails = {
             shogun: {
                 title: "Shogun's Pitch",
@@ -752,6 +903,11 @@
             });
         }
 
+        // Show contact function
+        function showContact() {
+            alert('📧 Contact section coming soon! For inquiries, please check back later.');
+        }
+
         // Show event details modal
         function showEventDetails(eventId) {
             const modal = document.getElementById('eventModal');
@@ -788,19 +944,30 @@
             }
         });
 
-        // Video overlay and navbar scroll effects
-        window.addEventListener('scroll', function() {
+        // Video overlay and navbar scroll effects with improved performance
+        let ticking = false;
+        
+        function updateScrollEffect() {
             const videoOverlay = document.getElementById('videoOverlay');
             const navbar = document.getElementById('navbar');
             const scrollY = window.scrollY;
             
-            // Video overlay effect
+            // Add overlay when scrolling starts
             if (scrollY > 50) {
                 videoOverlay.classList.add('scrolled');
                 navbar.classList.add('scrolled');
             } else {
                 videoOverlay.classList.remove('scrolled');
                 navbar.classList.remove('scrolled');
+            }
+            
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffect);
+                ticking = true;
             }
         });
 
@@ -818,26 +985,56 @@
             });
         });
 
-        // Animate cards on scroll
+        // Animate cards on scroll with improved performance
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100); // Stagger animation
                 }
             });
         }, observerOptions);
 
         // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Add loading animation
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Observe event cards for animation
             document.querySelectorAll('.event-card').forEach(card => {
                 observer.observe(card);
             });
+
+            // Add entrance animation to hero content
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = 'translateY(30px)';
+                heroContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    heroContent.style.transition = 'all 1s ease-out';
+                    heroContent.style.transform = 'translateY(0)';
+                    heroContent.style.opacity = '1';
+                }, 300);
+            }
         });
+
+        // Preload home page for faster navigation
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = 'index.html';
+        document.head.appendChild(link);
     </script>
 </body>
 </html>
