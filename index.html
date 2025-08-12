@@ -18,11 +18,37 @@
       scroll-behavior: smooth;
     }
 
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;  
+      height: 100vh;
+      z-index: -2;
+    }
+
     .bg-video video {
       width: 100vw;  
       height: 100vh; 
-      object-fit: cover; 
+      object-fit: cover;
+    }
+
+    /* Video overlay that becomes more opaque as you scroll */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.3s ease;
       z-index: -1;
+      pointer-events: none;
+    }
+
+    .video-overlay.scrolled {
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
     }
 
     .logo-img img {
@@ -95,7 +121,7 @@
       right: 20px;
     }
 
-    /* Scroll indicator */
+    /* Fixed scroll indicator styling */
     .scroll-indicator {
       position: absolute;
       bottom: 30px;
@@ -106,6 +132,13 @@
       cursor: pointer;
       animation: bounce 2s infinite;
       z-index: 10;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .scroll-indicator:focus {
+      outline: none;
     }
 
     @keyframes bounce {
@@ -123,18 +156,23 @@
     /* Events section that appears on scroll */
     .events-section {
       height: 100vh;
-      background: rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(20px);
+      background: transparent;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 50px 20px;
+      z-index: 1;
     }
 
     .events-preview {
       text-align: center;
       color: white;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
+      padding: 50px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .events-preview h2 {
@@ -167,6 +205,7 @@
       background: linear-gradient(45deg, #ffc107, #ff9800);
       transform: translateY(-2px);
       box-shadow: 0 10px 25px rgba(255, 235, 59, 0.4);
+      color: #333;
     }
 
     @media only screen and (max-width: 768px) {
@@ -189,6 +228,10 @@
 
       .events-preview h2 {
         font-size: 2rem;
+      }
+
+      .events-preview {
+        padding: 30px;
       }
     }
 
@@ -231,6 +274,10 @@
       .events-preview p {
         font-size: 1rem;
       }
+
+      .events-preview {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -239,35 +286,38 @@
     <video autoplay muted loop playsinline>
       <source src="hero-video.mp4" type="video/mp4"/>
     </video>
-    
-    <div class="logo-img">
-      <a href="https://licet.ac.in/" target="_blank">
-        <img src="Assets/img/LICET LOGO.png" alt="LICET Logo" width="70px" height="70px" class="m-3">
-      </a>
-    </div>
-    
-    <div class="nav-links">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><span class="separator">|</span></li>
-        <li><a href="#events-section">Events</a></li>
-        <li><span class="separator">|</span></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    
-    <div>
-      <h1 class="hero-text">STRATA'25</h1>
-    </div>
-    
-    <div class="dept-img">
-      <img src="logo (1).png" alt="Department Logo" width="90px" height="90px">
-    </div>
+  </div>
 
-    <div class="scroll-indicator" onclick="scrollToEvents()">
-      <div style="font-size: 2rem;">⬇</div>
-      <div style="font-size: 0.9rem; margin-top: 5px;">Explore Events</div>
-    </div>
+  <!-- Video overlay for scroll effect -->
+  <div class="video-overlay" id="videoOverlay"></div>
+    
+  <div class="logo-img">
+    <a href="https://licet.ac.in/" target="_blank">
+      <img src="Assets/img/LICET LOGO.png" alt="LICET Logo" width="70px" height="70px" class="m-3">
+    </a>
+  </div>
+  
+  <div class="nav-links">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><span class="separator">|</span></li>
+      <li><a href="#events-section">Events</a></li>
+      <li><span class="separator">|</span></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  
+  <div>
+    <h1 class="hero-text">STRATA'25</h1>
+  </div>
+  
+  <div class="dept-img">
+    <img src="logo (1).png" alt="Department Logo" width="90px" height="90px">
+  </div>
+
+  <div class="scroll-indicator" onclick="scrollToEvents()">
+    <div style="font-size: 2rem;">⬇</div>
+    <div style="font-size: 0.9rem; margin-top: 5px;">Scroll to explore</div>
   </div>
 
   <!-- Events Preview Section -->
@@ -287,6 +337,20 @@
       });
     }
 
+    // Video overlay scroll effect
+    window.addEventListener('scroll', function() {
+      const videoOverlay = document.getElementById('videoOverlay');
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // Add overlay when scrolling starts
+      if (scrollY > 50) {
+        videoOverlay.classList.add('scrolled');
+      } else {
+        videoOverlay.classList.remove('scrolled');
+      }
+    });
+
     // Smooth scrolling for all navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -300,133 +364,5 @@
       });
     });
   </script>
-</body>
-</html>}
-
-    .nav-links ul li a {
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
-      color: rgb(255, 255, 255);
-      text-decoration: none;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .nav-links ul li a:hover {
-      color: #ffeb3b;
-      text-shadow: 0 0 10px #ffeb3b;
-    }
-
-    .separator {
-      color: rgb(255, 255, 255);
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
-      margin: 0 10px;
-    }
-
-    .hero-text {
-      font-family: "Black Ops One", system-ui;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 180px;
-      color: rgb(243, 243, 244);
-      opacity: 0.85;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .dept-img {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-    }
-
-    @media only screen and (max-width: 768px) {
-      .nav-links ul li a {
-        font-size: 14px;
-      }
-      
-      .nav-links ul li {
-        margin: 0 10px;
-      }
-      
-      .separator {
-        font-size: 14px;
-        margin: 0 5px;
-      }
-      
-      .hero-text {
-        font-size: 80px;
-      }
-    }
-
-    @media only screen and (max-width: 480px) {
-      .nav-links {
-        top: 15px;
-      }
-      
-      .nav-links ul li a {
-        font-size: 12px;
-      }
-      
-      .nav-links ul li {
-        margin: 0 5px;
-      }
-      
-      .separator {
-        font-size: 12px;
-        margin: 0 3px;
-      }
-      
-      .hero-text {
-        font-size: 50px;
-      }
-      
-      .logo-img img {
-        width: 50px !important;
-        height: 50px !important;
-      }
-      
-      .dept-img img {
-        width: 60px !important;
-        height: 60px !important;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="bg-video">
-    <video autoplay muted loop playsinline>
-      <source src="hero-video.mp4" type="video/mp4"/>
-    </video>
-    
-    <div class="logo-img">
-      <a href="https://licet.ac.in/" target="_blank">
-        <img src="Assets/img/LICET LOGO.png" alt="LICET Logo" width="70px" height="70px" class="m-3">
-      </a>
-    </div>
-    
-    <div class="nav-links">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><span class="separator">|</span></li>
-        <li><a href="events.html">Events</a></li>
-        <li><span class="separator">|</span></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    
-    <div>
-      <h1 class="hero-text">STRATA'25</h1>
-    </div>
-    
-    <div class="dept-img">
-      <img src="logo (1).png" alt="Department Logo" width="90px" height="90px">
-    </div>
-  </div>
-  
-  <script src="Assets/js/bootstrap.min.js"></script>
 </body>
 </html>
