@@ -21,17 +21,9 @@
             scroll-behavior: smooth;
         }
 
-        /* Hero Section */
-        .hero-section {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
+        /* Fixed background video */
         .bg-video {
-            position: absolute; /* Changed from fixed to absolute */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -45,21 +37,38 @@
             object-fit: cover;
         }
 
-        .hero-overlay {
-            position: absolute;
+        /* Video overlay that becomes more opaque as you scroll */
+        .video-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0);
+            transition: all 0.3s ease;
             z-index: -1;
+            pointer-events: none;
+        }
+
+        .video-overlay.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-content {
             text-align: center;
             color: white;
             z-index: 1;
-            position: relative; /* Added for better layering */
+            position: relative;
         }
 
         .hero-title {
@@ -75,6 +84,7 @@
             margin-bottom: 2rem;
         }
 
+        /* Fixed scroll indicator styling */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -82,7 +92,15 @@
             transform: translateX(-50%);
             color: white;
             animation: bounce 2s infinite;
-            cursor: pointer; /* Added cursor pointer */
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        .scroll-indicator:focus {
+            outline: none;
         }
 
         @keyframes bounce {
@@ -168,10 +186,10 @@
             height: 50px;
         }
 
-        /* Events Section - Fixed background issue */
+        /* Events Section */
         .events-section {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); /* Solid background instead of backdrop-filter */
+            background: transparent;
             padding: 100px 0 50px;
             position: relative;
             z-index: 1;
@@ -208,7 +226,7 @@
         }
 
         .event-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 30px;
@@ -216,6 +234,13 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .event-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .event-card::before {
@@ -300,7 +325,7 @@
             background: rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
-            color: white; /* Prevent color change on hover */
+            color: white;
         }
 
         .btn-register {
@@ -313,7 +338,7 @@
             background: linear-gradient(45deg, #ffc107, #ff9800);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 235, 59, 0.4);
-            color: #333; /* Prevent color change on hover */
+            color: #333;
         }
 
         /* Modal Styles */
@@ -461,6 +486,9 @@
         </video>
     </div>
 
+    <!-- Video overlay for scroll effect -->
+    <div class="video-overlay" id="videoOverlay"></div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-content">
@@ -484,7 +512,6 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">EVENTS</h1>
             <p class="hero-subtitle">Discover the exciting competitions at STRATA'25</p>
@@ -755,12 +782,18 @@
             }
         });
 
-        // Navbar scroll effect
+        // Video overlay and navbar scroll effects
         window.addEventListener('scroll', function() {
+            const videoOverlay = document.getElementById('videoOverlay');
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
+            const scrollY = window.scrollY;
+            
+            // Video overlay effect
+            if (scrollY > 50) {
+                videoOverlay.classList.add('scrolled');
                 navbar.classList.add('scrolled');
             } else {
+                videoOverlay.classList.remove('scrolled');
                 navbar.classList.remove('scrolled');
             }
         });
@@ -779,7 +812,7 @@
             });
         });
 
-        // Add scroll reveal animation
+        // Animate cards on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -788,18 +821,14 @@
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Animate cards on scroll
+        // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.event-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(50px)';
-                card.style.transition = 'all 0.6s ease';
                 observer.observe(card);
             });
         });
