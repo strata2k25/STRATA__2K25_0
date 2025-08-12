@@ -1,44 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STRATA'25</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Your Site</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="style.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<!-- Header -->
+		<header id="header">
+			<div class="logo left-logo">
+				<a href="https://licet.ac.in/" target="_blank">
+					<img src="left-logo.png" alt="Left Logo">
+				</a>
+			</div>
 
-    <!-- Video Background -->
-    <video autoplay muted loop playsinline id="bg-video">
-        <source src="hero-video.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
+			<nav id="nav">
+				<ul>
+					<li><a href="#home">Home</a></li>
+					<li class="separator">|</li>
+					<li><a href="#events">Events</a></li>
+					<li class="separator">|</li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
 
-    <!-- Navigation Bar -->
-    <header>
-        <div class="logo">
-            <a href="https://licet.ac.in/" target="_blank">
-                <img src="logo.png" alt="LICET Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <span class="separator">|</span>
-                <li><a href="#">Events</a></li>
-                <span class="separator">|</span>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+			<div class="logo right-logo">
+				<img src="right-logo.png" alt="Right Logo">
+			</div>
+		</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h1>STRATA'25</h1>
-        </div>
-    </section>
+		<!-- Banner -->
+		<section id="banner">
+			<header>
+				<h2>Strata Banner</h2>
+			</header>
+		</section>
 
-</body>
+		<!-- Main Content -->
+		<section id="main">
+			<div class="inner">
+				<!-- Your strata content here -->
+				<img src="strata.png" alt="Strata" class="strata-center">
+			</div>
+		</section>
+	</body>
 </html>
