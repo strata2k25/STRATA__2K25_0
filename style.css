@@ -1,98 +1,69 @@
-/* Reset & Global */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    overflow-x: hidden;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	background-color: #fff;
 }
 
-/* Video Background */
-#bg-video {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1000;
+/* Header layout */
+#header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	background: none; /* no translucent bar */
+	z-index: 1000;
 }
 
 .logo img {
-    height: 50px;
-    transition: transform 0.3s ease;
+	height: 50px;
+	cursor: pointer;
 }
 
-.logo img:hover {
-    transform: scale(1.05);
+#nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+#nav li {
+	margin: 0 10px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+#nav li.separator {
+	color: #000;
+	pointer-events: none;
 }
 
-nav ul li a:hover {
-    color: #f0a500;
+/* Center nav in header */
+#nav {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-.separator {
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 300;
+/* Strata bigger in center */
+.strata-center {
+	display: block;
+	margin: 100px auto 0 auto;
+	width: 70%; /* bigger size */
+	max-width: 900px;
 }
 
-/* Hero Section */
-.hero {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding-top: 60px;
-    text-align: center;
-}
-
-.hero-text h1 {
-    font-size: 15vw;
-    font-weight: 800;
-    line-height: 1;
-    white-space: nowrap;
-}
-
-/* Mobile Adjustments */
-@media only screen and (max-width: 768px) {
-    .hero-text h1 {
-        font-size: 18vw;
-    }
-    header {
-        padding: 10px 20px;
-    }
-    .logo img {
-        height: 40px;
-    }
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+	#nav {
+		position: static;
+		transform: none;
+	}
+	.strata-center {
+		width: 90%;
+	}
+	.logo img {
+		height: 40px;
+	}
 }
