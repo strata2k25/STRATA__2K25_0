@@ -1,69 +1,139 @@
-body {
-	margin: 0;
-	font-family: 'Poppins', sans-serif;
-	background-color: #fff;
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Header layout */
-#header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 10px 20px;
-	position: fixed;
-	top: 0;
-	width: 100%;
-	background: none; /* no translucent bar */
-	z-index: 1000;
+.bg-video video {
+  width: 100vw;  
+  height: 100vh; 
+  object-fit: cover; 
+  z-index: -1;
 }
 
-.logo img {
-	height: 50px;
-	cursor: pointer;
+.logo-img img {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
-#nav ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	align-items: center;
+.logo-img img:hover {
+  opacity: 0.8;
 }
 
-#nav li {
-	margin: 0 10px;
+.nav-links {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-#nav li.separator {
-	color: #000;
-	pointer-events: none;
+.nav-links ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
 }
 
-/* Center nav in header */
-#nav {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+.nav-links ul li {
+  margin: 0 20px;
 }
 
-/* Strata bigger in center */
-.strata-center {
-	display: block;
-	margin: 100px auto 0 auto;
-	width: 70%; /* bigger size */
-	max-width: 900px;
+.nav-links ul li a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-/* Mobile adjustments */
-@media screen and (max-width: 768px) {
-	#nav {
-		position: static;
-		transform: none;
-	}
-	.strata-center {
-		width: 90%;
-	}
-	.logo img {
-		height: 40px;
-	}
+.nav-links ul li a:hover {
+  color: #ffeb3b;
+  text-shadow: 0 0 10px #ffeb3b;
+}
+
+.separator {
+  color: rgb(255, 255, 255);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.hero-text {
+  font-family: "Black Ops One", system-ui;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 180px;
+  color: rgb(243, 243, 244);
+  opacity: 0.85;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dept-img {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-links ul li a {
+    font-size: 14px;
+  }
+  
+  .nav-links ul li {
+    margin: 0 10px;
+  }
+  
+  .separator {
+    font-size: 14px;
+    margin: 0 5px;
+  }
+  
+  .hero-text {
+    font-size: 80px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .nav-links {
+    top: 15px;
+  }
+  
+  .nav-links ul li a {
+    font-size: 12px;
+  }
+  
+  .nav-links ul li {
+    margin: 0 5px;
+  }
+  
+  .separator {
+    font-size: 12px;
+    margin: 0 3px;
+  }
+  
+  .hero-text {
+    font-size: 50px;
+  }
+  
+  .logo-img img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .dept-img img {
+    width: 60px !important;
+    height: 60px !important;
+  }
 }
