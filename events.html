@@ -18,6 +18,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Hero Section */
@@ -30,7 +31,7 @@
         }
 
         .bg-video {
-            position: fixed;
+            position: absolute; /* Changed from fixed to absolute */
             top: 0;
             left: 0;
             width: 100%;
@@ -39,8 +40,8 @@
         }
 
         .bg-video video {
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
 
@@ -58,6 +59,7 @@
             text-align: center;
             color: white;
             z-index: 1;
+            position: relative; /* Added for better layering */
         }
 
         .hero-title {
@@ -80,6 +82,7 @@
             transform: translateX(-50%);
             color: white;
             animation: bounce 2s infinite;
+            cursor: pointer; /* Added cursor pointer */
         }
 
         @keyframes bounce {
@@ -165,11 +168,10 @@
             height: 50px;
         }
 
-        /* Events Section */
+        /* Events Section - Fixed background issue */
         .events-section {
             min-height: 100vh;
-            background: rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(20px);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); /* Solid background instead of backdrop-filter */
             padding: 100px 0 50px;
             position: relative;
             z-index: 1;
@@ -298,6 +300,7 @@
             background: rgba(255, 255, 255, 0.3);
             border-color: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
+            color: white; /* Prevent color change on hover */
         }
 
         .btn-register {
@@ -310,6 +313,7 @@
             background: linear-gradient(45deg, #ffc107, #ff9800);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 235, 59, 0.4);
+            color: #333; /* Prevent color change on hover */
         }
 
         /* Modal Styles */
@@ -423,6 +427,10 @@
             .nav-links a {
                 font-size: 14px;
             }
+
+            .nav-content {
+                padding: 0 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -436,6 +444,11 @@
             
             .section-title {
                 font-size: 1.5rem;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 10px;
             }
         }
     </style>
@@ -476,7 +489,7 @@
             <h1 class="hero-title">EVENTS</h1>
             <p class="hero-subtitle">Discover the exciting competitions at STRATA'25</p>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-indicator" onclick="scrollToEvents()">
             <div style="font-size: 2rem;">⬇</div>
             <div style="font-size: 0.9rem; margin-top: 5px;">Scroll to explore</div>
         </div>
@@ -560,7 +573,7 @@
 
     <script src="Assets/js/bootstrap.min.js"></script>
     <script>
-        // Event details data - YOU CAN UPDATE THESE LATER
+        // Event details data
         const eventDetails = {
             shogun: {
                 title: "Shogun's Pitch",
@@ -699,6 +712,13 @@
             }
         };
 
+        // Scroll to events function
+        function scrollToEvents() {
+            document.getElementById('events').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
         // Show event details modal
         function showEventDetails(eventId) {
             const modal = document.getElementById('eventModal');
@@ -734,6 +754,7 @@
                 closeModal();
             }
         });
+
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -774,11 +795,13 @@
         }, observerOptions);
 
         // Animate cards on scroll
-        document.querySelectorAll('.event-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(50px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
         });
     </script>
 </body>
