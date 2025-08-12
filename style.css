@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+
+}
+.e_name{
+    position: absolute;
+    top: 320px;
+    left: 470px;
+    
+}
+.e_name h1{
+    font-size: 130px;
+    opacity: 0.8;
+    color: rgb(93, 88, 88);
+}
+
+section {
+    overflow: hidden;
+}
+
+header{
+    max-height: 100vh;
+}
+.hero-img {
+    max-width: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+}
+
+.logo-img {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1111;
+    width: 70px;
+    height: 70px;
+}
+
+.nav-links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+.nav-links ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+}
+
+.nav-links ul li a {
+    padding: 0px 10px;
+    text-decoration: none;
+    font-size: 24px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.card {
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+}
+
+
+@media (max-width: 768px) {
+    .hero-img {
+        min-height: 100vh;
+    }
+    .nav-links {
+        position: static;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .nav-links ul {
+        flex-direction: column;
+    }
+    .e_name h1{
+        display: none;
+    }
+    .nav-links ul li a{
+        display: none;
+    }
+    
+   
+}
+
+.text-coming{
+    margin-top: 150px;
+}
