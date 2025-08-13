@@ -466,6 +466,88 @@
         font-size: 0.8rem !important;
       }
     }
+    .contact-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.contact-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 700px;
+  width: 100%;
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contact-box h2 {
+  font-family: 'Black Ops One', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+}
+
+.coordinator {
+  margin-bottom: 20px;
+}
+
+.coordinator h5 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.coordinator a {
+  color: #06b6d4;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.coordinator a:hover {
+  text-decoration: underline;
+  color: #0ef;
+}
+
+.contact-links {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.contact-links a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-links a:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.5);
+  transform: translateY(-2px);
+}
+
+@media only screen and (max-width: 768px) {
+  .contact-box {
+    padding: 30px 20px;
+  }
+
+  .contact-box h2 {
+    font-size: 2rem;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -636,4 +718,5 @@
   </script>
 </body>
 </html>
+
 
