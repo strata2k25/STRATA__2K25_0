@@ -46,28 +46,28 @@
       object-fit: cover;
     }
 
-    /* Video overlay that becomes blue-tinted as you scroll */
+    /* Video overlay with transparent blur effect */
     .video-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(10, 25, 41, 0.2);
+      background: rgba(0, 0, 0, 0.1);
       transition: all 0.5s ease;
       z-index: -1;
       pointer-events: none;
     }
 
     .video-overlay.scrolled {
-      background: rgba(14, 58, 138, 0.7);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
     }
 
     /* Main container to prevent content overlap */
     .main-container {
       position: relative;
-      min-height: 200vh; /* Ensure scrollable content */
+      min-height: 200vh;
       z-index: 1;
     }
 
@@ -99,11 +99,11 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 1000;
-      background: rgba(14, 58, 138, 0.2);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(15px);
       border-radius: 25px;
       padding: 8px 20px;
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .nav-links ul {
@@ -132,7 +132,7 @@
 
     .nav-links ul li a:hover {
       color: #06b6d4;
-      background: rgba(6, 182, 212, 0.1);
+      background: rgba(6, 182, 212, 0.15);
       text-shadow: 0 0 10px #06b6d4;
     }
 
@@ -183,7 +183,6 @@
       border-radius: 8px;
     }
 
-    /* Fixed scroll indicator styling */
     .scroll-indicator {
       position: absolute;
       bottom: 40px;
@@ -194,17 +193,17 @@
       cursor: pointer;
       animation: bounce 2s infinite;
       z-index: 10;
-      background: rgba(14, 58, 138, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 20px;
       padding: 15px 20px;
       transition: all 0.3s ease;
     }
 
     .scroll-indicator:hover {
-      background: rgba(6, 182, 212, 0.2);
-      border-color: rgba(6, 182, 212, 0.5);
+      background: rgba(6, 182, 212, 0.15);
+      border-color: rgba(6, 182, 212, 0.4);
       transform: translateX(-50%) translateY(-5px);
     }
 
@@ -239,12 +238,12 @@
     .events-preview {
       text-align: center;
       color: white;
-      background: rgba(14, 58, 138, 0.4);
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(20px);
       padding: 60px 50px;
       border-radius: 25px;
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
       max-width: 800px;
       width: 90%;
       transition: all 0.3s ease;
@@ -252,8 +251,8 @@
 
     .events-preview:hover {
       transform: translateY(-10px);
-      box-shadow: 0 35px 70px rgba(6, 182, 212, 0.3);
-      border-color: rgba(59, 130, 246, 0.6);
+      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+      border-color: rgba(6, 182, 212, 0.4);
     }
 
     .events-preview h2 {
@@ -333,20 +332,21 @@
 
     @media only screen and (max-width: 768px) {
       .nav-links ul li a {
-        font-size: 14px;
-        padding: 6px 10px;
+        font-size: 12px;
+        padding: 6px 8px;
       }
       
       .nav-links ul li {
-        margin: 0 8px;
+        margin: 0 6px;
       }
       
       .nav-links {
-        padding: 6px 15px;
+        padding: 6px 12px;
+        top: 10px;
       }
       
       .separator {
-        font-size: 14px;
+        font-size: 12px;
         margin: 0 3px;
       }
       
@@ -370,25 +370,45 @@
         padding: 15px 30px;
         font-size: 1rem;
       }
+
+      .logo-img {
+        top: 12px;
+        left: 12px;
+      }
+
+      .logo-img img {
+        width: 45px !important;
+        height: 45px !important;
+      }
+
+      .dept-img {
+        top: 12px;
+        right: 12px;
+      }
+
+      .dept-img img {
+        width: 45px !important;
+        height: 45px !important;
+      }
     }
 
     @media only screen and (max-width: 480px) {
       .nav-links {
-        top: 10px;
-        padding: 5px 12px;
+        top: 8px;
+        padding: 4px 10px;
       }
       
       .nav-links ul li a {
-        font-size: 12px;
-        padding: 5px 8px;
+        font-size: 10px;
+        padding: 4px 6px;
       }
       
       .nav-links ul li {
-        margin: 0 4px;
+        margin: 0 3px;
       }
       
       .separator {
-        font-size: 12px;
+        font-size: 10px;
         margin: 0 2px;
       }
       
@@ -396,14 +416,24 @@
         font-size: 50px;
       }
       
+      .logo-img {
+        top: 8px;
+        left: 8px;
+      }
+      
       .logo-img img {
-        width: 50px !important;
-        height: 50px !important;
+        width: 35px !important;
+        height: 35px !important;
+      }
+      
+      .dept-img {
+        top: 8px;
+        right: 8px;
       }
       
       .dept-img img {
-        width: 60px !important;
-        height: 60px !important;
+        width: 35px !important;
+        height: 35px !important;
       }
 
       .events-preview h2 {
@@ -425,7 +455,15 @@
 
       .scroll-indicator {
         bottom: 30px;
-        padding: 12px 15px;
+        padding: 10px 12px;
+      }
+
+      .scroll-indicator div:first-child {
+        font-size: 1.5rem !important;
+      }
+
+      .scroll-indicator div:last-child {
+        font-size: 0.8rem !important;
       }
     }
   </style>
@@ -497,7 +535,6 @@
     }
 
     function scrollToContact() {
-      // Placeholder for contact section
       alert('Contact section coming soon! 📧');
     }
 
