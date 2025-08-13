@@ -49,22 +49,22 @@
             object-fit: cover;
         }
 
-        /* Blue-tinted video overlay */
+        /* Transparent video overlay */
         .video-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 25, 41, 0.3);
+            background: rgba(0, 0, 0, 0.2);
             transition: all 0.5s ease;
             z-index: -1;
             pointer-events: none;
         }
 
         .video-overlay.scrolled {
-            background: rgba(14, 58, 138, 0.7);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
         }
 
         /* Hero Section */
@@ -113,9 +113,9 @@
             color: white;
             animation: bounce 2s infinite;
             cursor: pointer;
-            background: rgba(14, 58, 138, 0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 15px 20px;
             text-align: center;
@@ -123,8 +123,8 @@
         }
 
         .scroll-indicator:hover {
-            background: rgba(6, 182, 212, 0.2);
-            border-color: rgba(6, 182, 212, 0.5);
+            background: rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.4);
             transform: translateX(-50%) translateY(-5px);
         }
 
@@ -149,18 +149,18 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(14, 58, 138, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             z-index: 1000;
             transition: all 0.3s ease;
             padding: 15px 0;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .navbar.scrolled {
-            background: rgba(14, 58, 138, 0.8);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
-            border-bottom-color: rgba(59, 130, 246, 0.4);
+            border-bottom-color: rgba(255, 255, 255, 0.2);
         }
 
         .nav-content {
@@ -189,11 +189,11 @@
             display: flex;
             align-items: center;
             list-style: none;
-            background: rgba(14, 58, 138, 0.3);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
             border-radius: 25px;
             padding: 8px 20px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .nav-links li {
@@ -214,7 +214,7 @@
 
         .nav-links a:hover {
             color: #06b6d4;
-            background: rgba(6, 182, 212, 0.1);
+            background: rgba(6, 182, 212, 0.15);
             text-shadow: 0 0 10px #06b6d4;
         }
 
@@ -238,7 +238,7 @@
         .events-section {
             min-height: 100vh;
             background: transparent;
-            padding: 120px 0 60px;
+            padding: 120px 0 80px;
             position: relative;
             z-index: 1;
         }
@@ -271,21 +271,21 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 60px;
         }
 
         .event-card {
-            background: rgba(14, 58, 138, 0.4);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border-radius: 25px;
             padding: 35px;
-            border: 1px solid rgba(59, 130, 246, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             opacity: 0;
             transform: translateY(50px);
-            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .event-card.visible {
@@ -300,7 +300,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(14, 116, 144, 0.1));
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(14, 116, 144, 0.05));
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: -1;
@@ -308,8 +308,8 @@
 
         .event-card:hover {
             transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.3);
-            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.4);
         }
 
         .event-card:hover::before {
@@ -358,7 +358,7 @@
             flex-wrap: wrap;
         }
 
-        .btn-details, .btn-register {
+        .btn-details {
             padding: 12px 24px;
             border-radius: 25px;
             border: none;
@@ -372,9 +372,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .btn-details {
             background: rgba(6, 182, 212, 0.2);
             color: white;
             border: 1px solid rgba(6, 182, 212, 0.4);
@@ -403,15 +400,49 @@
             box-shadow: 0 8px 20px rgba(6, 182, 212, 0.2);
         }
 
-        .btn-register {
-            background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
-            color: white;
-            font-weight: 600;
-            border: 2px solid rgba(6, 182, 212, 0.6);
-            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.25);
+        /* Common Register Button */
+        .register-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 0 20px;
         }
 
-        .btn-register::before {
+        .register-title {
+            color: white;
+            font-family: 'Black Ops One', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .register-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-register-main {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
+            color: white;
+            text-decoration: none;
+            border-radius: 35px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(6, 182, 212, 0.6);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-register-main::before {
             content: '';
             position: absolute;
             top: 0;
@@ -422,14 +453,14 @@
             transition: left 0.5s ease;
         }
 
-        .btn-register:hover::before {
+        .btn-register-main:hover::before {
             left: 100%;
         }
 
-        .btn-register:hover {
+        .btn-register-main:hover {
             background: linear-gradient(135deg, #0891b2, #0e7490, #155e75);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(6, 182, 212, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(6, 182, 212, 0.5);
             color: white;
             text-decoration: none;
             border-color: rgba(6, 182, 212, 0.8);
@@ -443,7 +474,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 25, 41, 0.9);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(15px);
             z-index: 2000;
         }
@@ -455,17 +486,17 @@
         }
 
         .modal-content {
-            background: rgba(14, 58, 138, 0.9);
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(25px);
-            border: 1px solid rgba(59, 130, 246, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
             padding: 40px;
-            max-width: 600px;
-            max-height: 80vh;
+            max-width: 700px;
+            max-height: 85vh;
             overflow-y: auto;
             margin: 20px;
             position: relative;
-            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
         }
 
         .modal-header {
@@ -473,6 +504,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
         }
 
         .modal-title {
@@ -480,6 +513,7 @@
             font-size: 1.8rem;
             font-weight: 600;
             font-family: 'Poppins', sans-serif;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
         }
 
         .close-btn {
@@ -513,10 +547,28 @@
             margin: 25px 0 12px 0;
             font-size: 1.2rem;
             font-weight: 600;
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+        }
+
+        .modal-body h4:first-child {
+            margin-top: 0;
         }
 
         .modal-body p {
             margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        .modal-body strong {
+            color: #06b6d4;
         }
 
         /* Responsive Design */
@@ -539,6 +591,10 @@
             
             .section-title {
                 font-size: 2.5rem;
+            }
+
+            .register-title {
+                font-size: 2rem;
             }
         }
 
@@ -565,8 +621,8 @@
             }
             
             .nav-links a {
-                font-size: 14px;
-                padding: 6px 10px;
+                font-size: 12px;
+                padding: 6px 8px;
             }
 
             .nav-content {
@@ -574,7 +630,7 @@
             }
 
             .events-section {
-                padding: 100px 0 50px;
+                padding: 100px 0 60px;
             }
 
             .event-card {
@@ -582,7 +638,25 @@
             }
 
             .nav-links {
-                padding: 6px 15px;
+                padding: 6px 12px;
+            }
+
+            .logo img, .dept-logo img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .register-title {
+                font-size: 1.8rem;
+            }
+
+            .register-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .btn-register-main {
+                padding: 15px 35px;
+                font-size: 1.1rem;
             }
         }
 
@@ -603,34 +677,69 @@
             .modal-content {
                 padding: 25px;
                 margin: 15px;
+                max-height: 90vh;
             }
 
             .nav-links li {
-                margin: 0 5px;
+                margin: 0 4px;
             }
 
             .nav-links a {
-                font-size: 12px;
-                padding: 5px 8px;
+                font-size: 10px;
+                padding: 4px 6px;
             }
 
             .logo img, .dept-logo img {
-                width: 40px;
-                height: 40px;
+                width: 35px;
+                height: 35px;
             }
 
             .events-container {
                 padding: 0 15px;
             }
 
-            .btn-details, .btn-register {
+            .btn-details {
                 padding: 10px 20px;
                 font-size: 0.85rem;
             }
 
             .scroll-indicator {
                 bottom: 30px;
-                padding: 12px 15px;
+                padding: 10px 12px;
+            }
+
+            .scroll-indicator div:first-child {
+                font-size: 1.5rem !important;
+            }
+
+            .scroll-indicator div:last-child {
+                font-size: 0.8rem !important;
+            }
+
+            .register-section {
+                margin: 40px 0;
+            }
+
+            .register-title {
+                font-size: 1.5rem;
+            }
+
+            .register-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .btn-register-main {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                padding: 4px 8px;
+            }
+
+            .navbar {
+                padding: 10px 0;
             }
         }
     </style>
@@ -692,7 +801,6 @@
                     <p class="event-description">Showcase your research skills and ideas with a well-crafted paper and presentation. Impress the judges with clarity, originality, and confident delivery.</p>
                     <div class="event-buttons">
                         <button class="btn-details" onclick="showEventDetails('shogun')">View Details</button>
-                        <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register">Register Now</a>
                     </div>
                 </div>
                 
@@ -702,7 +810,6 @@
                     <p class="event-description">Hunt bugs, fix code, and crack problems across C, Python, and Java. Speed, accuracy, and problem-solving wits will crown the coding champion.</p>
                     <div class="event-buttons">
                         <button class="btn-details" onclick="showEventDetails('syntax')">View Details</button>
-                        <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register">Register Now</a>
                     </div>
                 </div>
                 
@@ -712,7 +819,6 @@
                     <p class="event-description">See it, describe it, recreate it. Get shown an image, then craft the perfect AI prompt to generate its twin. Accuracy, creativity, and clever wording decide the victor.</p>
                     <div class="event-buttons">
                         <button class="btn-details" onclick="showEventDetails('scroll')">View Details</button>
-                        <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register">Register Now</a>
                     </div>
                 </div>
             </div>
@@ -725,7 +831,6 @@
                     <p class="event-description">Analyze cricket stats, outthink rivals, and draft your dream team in a high-pressure mock auction. Data skills, budget strategy, and sharp judgment will decide the champion.</p>
                     <div class="event-buttons">
                         <button class="btn-details" onclick="showEventDetails('stat')">View Details</button>
-                        <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register">Register Now</a>
                     </div>
                 </div>
                 
@@ -735,14 +840,20 @@
                     <p class="event-description">Bid for futuristic patents, sabotage rivals, and fuse your winnings into the ultimate product pitch. Outwit, outbid, and outlast your opponents in this high-stakes tech showdown.</p>
                     <div class="event-buttons">
                         <button class="btn-details" onclick="showEventDetails('feudal')">View Details</button>
-                        <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register">Register Now</a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Common Registration Section -->
+            <div class="register-section">
+                <h3 class="register-title">READY TO COMPETE?</h3>
+                <p class="register-subtitle">Join STRATA'25 and showcase your skills in these exciting competitions. Register now to secure your spot!</p>
+                <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register-main">Register Now</a>
             </div>
         </div>
     </section>
 
-    <!-- Event Details Modals -->
+    <!-- Event Details Modal -->
     <div id="eventModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -757,141 +868,340 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Event details data
+        // Event details data - You can easily update this section
         const eventDetails = {
             shogun: {
                 title: "Shogun's Pitch",
                 content: `
                     <h4>🎯 Event Overview</h4>
-                    <p>Showcase your research skills and ideas with a well-crafted paper and presentation. Impress the judges with clarity, originality, and confident delivery.</p>
+                    <p>Showcase your research skills and ideas with a well-crafted paper and presentation. Participants will demonstrate their ability to research, analyze, and present complex topics with clarity and originality.</p>
                     
                     <h4>📋 Event Format</h4>
-                    <p><strong>Phase 1:</strong> Research Paper Submission</p>
-                    <p><strong>Phase 2:</strong> Presentation Round</p>
+                    <p><strong>Phase 1:</strong> Research Paper Submission (Abstract + Full Paper)</p>
+                    <p><strong>Phase 2:</strong> Presentation Round (10-15 minutes + Q&A)</p>
                     
-                    <h4>⏰ Duration</h4>
-                    <p>Paper Submission: [TO BE UPDATED]</p>
-                    <p>Presentation: [TO BE UPDATED]</p>
+                    <h4>⏰ Duration & Schedule</h4>
+                    <p><strong>Paper Submission Deadline:</strong> [Add your date here]</p>
+                    <p><strong>Presentation Day:</strong> [Add your date here]</p>
+                    <p><strong>Presentation Time:</strong> 12 minutes presentation + 3 minutes Q&A</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p>[TO BE UPDATED - Add prize details here]</p>
+                    <p><strong>1st Prize:</strong> ₹[Amount] + Certificate + Trophy</p>
+                    <p><strong>2nd Prize:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>3rd Prize:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Participation:</strong> Certificate for all participants</p>
                     
                     <h4>📜 Rules & Guidelines</h4>
-                    <p>[TO BE UPDATED - Add detailed rules here]</p>
+                    <ul>
+                        <li>Individual event - no team participation allowed</li>
+                        <li>Research paper must be original work (no plagiarism)</li>
+                        <li>Word limit: 3000-5000 words (excluding references)</li>
+                        <li>Topics must be related to [Specify your domain/field]</li>
+                        <li>IEEE format mandatory for paper submission</li>
+                        <li>Presentation slides mandatory (PowerPoint/PDF)</li>
+                        <li>Use of references and citations required</li>
+                        <li>All submissions must be in English</li>
+                        <li>Late submissions will not be accepted</li>
+                        <li>Judges' decision will be final</li>
+                    </ul>
                     
-                    <h4>👥 Team Size</h4>
-                    <p>[TO BE UPDATED - Individual/Team event details]</p>
+                    <h4>📊 Judging Criteria</h4>
+                    <ul>
+                        <li><strong>Research Quality (30%):</strong> Depth, accuracy, and originality</li>
+                        <li><strong>Content Organization (25%):</strong> Structure and flow</li>
+                        <li><strong>Presentation Skills (25%):</strong> Clarity, confidence, timing</li>
+                        <li><strong>Q&A Handling (20%):</strong> Knowledge demonstration</li>
+                    </ul>
                     
-                    <h4>📞 Contact</h4>
-                    <p>[TO BE UPDATED - Add coordinator contact details]</p>
+                    <h4>👥 Eligibility</h4>
+                    <p><strong>Team Size:</strong> Individual participation only</p>
+                    <p><strong>Eligible:</strong> All undergraduate and postgraduate students</p>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
                 `
             },
             syntax: {
                 title: "Syntax Strike",
                 content: `
                     <h4>⚡ Event Overview</h4>
-                    <p>Hunt bugs, fix code, and crack problems across C, Python, and Java. Speed, accuracy, and problem-solving wits will crown the coding champion.</p>
+                    <p>A high-intensity coding competition testing your programming skills across multiple languages. Hunt bugs, solve problems, and demonstrate your coding prowess under pressure.</p>
                     
                     <h4>💻 Programming Languages</h4>
-                    <p>• C Programming</p>
-                    <p>• Python</p>
-                    <p>• Java</p>
+                    <ul>
+                        <li><strong>C Programming:</strong> Debugging and problem-solving</li>
+                        <li><strong>Python:</strong> Algorithm implementation and optimization</li>
+                        <li><strong>Java:</strong> Object-oriented programming challenges</li>
+                    </ul>
                     
-                    <h4>⏰ Duration</h4>
-                    <p>[TO BE UPDATED - Add event timing]</p>
+                    <h4>🎯 Event Structure</h4>
+                    <p><strong>Round 1:</strong> Bug Hunt (30 minutes) - Find and fix errors in given code</p>
+                    <p><strong>Round 2:</strong> Speed Coding (45 minutes) - Solve programming problems</p>
+                    <p><strong>Round 3:</strong> Algorithm Challenge (60 minutes) - Complex problem solving</p>
+                    
+                    <h4>⏰ Duration & Schedule</h4>
+                    <p><strong>Event Date:</strong> [Add your date here]</p>
+                    <p><strong>Total Duration:</strong> 2.5 hours (including breaks)</p>
+                    <p><strong>Reporting Time:</strong> [Add time] (30 minutes before start)</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p>[TO BE UPDATED - Add prize details here]</p>
+                    <p><strong>1st Prize:</strong> ₹[Amount] + Certificate + Trophy</p>
+                    <p><strong>2nd Prize:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>3rd Prize:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Participation:</strong> Certificate for all participants</p>
                     
                     <h4>📜 Rules & Guidelines</h4>
-                    <p>[TO BE UPDATED - Add detailed rules here]</p>
+                    <ul>
+                        <li>Individual event - no collaboration allowed</li>
+                        <li>Use of online compilers/IDEs provided only</li>
+                        <li>No external help or internet browsing permitted</li>
+                        <li>Bring your own laptop (backup systems available)</li>
+                        <li>Code comments encouraged for partial marks</li>
+                        <li>Time limits strictly enforced for each round</li>
+                        <li>Cheating/unfair practices lead to disqualification</li>
+                        <li>Mobile phones must be switched off</li>
+                        <li>Participants must arrive on time</li>
+                    </ul>
                     
-                    <h4>👥 Team Size</h4>
-                    <p>[TO BE UPDATED - Individual/Team event details]</p>
+                    <h4>💻 Technical Requirements</h4>
+                    <ul>
+                        <li>Basic knowledge of C, Python, and Java</li>
+                        <li>Understanding of data structures and algorithms</li>
+                        <li>Debugging and problem-solving skills</li>
+                        <li>Time management under pressure</li>
+                    </ul>
                     
-                    <h4>📞 Contact</h4>
-                    <p>[TO BE UPDATED - Add coordinator contact details]</p>
+                    <h4>📊 Scoring System</h4>
+                    <ul>
+                        <li><strong>Correctness (40%):</strong> Code functionality and accuracy</li>
+                        <li><strong>Efficiency (30%):</strong> Time and space complexity</li>
+                        <li><strong>Speed (20%):</strong> Completion time</li>
+                        <li><strong>Code Quality (10%):</strong> Readability and structure</li>
+                    </ul>
+                    
+                    <h4>👥 Eligibility</h4>
+                    <p><strong>Team Size:</strong> Individual participation only</p>
+                    <p><strong>Eligible:</strong> All students with basic programming knowledge</p>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
                 `
             },
             scroll: {
                 title: "Scroll Trace",
                 content: `
                     <h4>🔍 Event Overview</h4>
-                    <p>See it, describe it, recreate it. Get shown an image, then craft the perfect AI prompt to generate its twin. Accuracy, creativity, and clever wording decide the victor.</p>
+                    <p>Test your visual analysis and AI prompt engineering skills. Participants will view images and craft precise prompts to recreate them using AI tools, combining creativity with technical precision.</p>
                     
                     <h4>🎨 Event Format</h4>
-                    <p><strong>Round 1:</strong> Image Analysis</p>
-                    <p><strong>Round 2:</strong> Prompt Crafting</p>
-                    <p><strong>Round 3:</strong> AI Generation Challenge</p>
+                    <p><strong>Round 1:</strong> Image Analysis (20 minutes) - Describe given images in detail</p>
+                    <p><strong>Round 2:</strong> Prompt Crafting (30 minutes) - Create AI prompts for image generation</p>
+                    <p><strong>Round 3:</strong> AI Generation Challenge (25 minutes) - Generate and refine images</p>
                     
-                    <h4>⏰ Duration</h4>
-                    <p>[TO BE UPDATED - Add event timing]</p>
+                    <h4>🤖 AI Tools Provided</h4>
+                    <ul>
+                        <li>DALL-E 2/3 or similar image generation tools</li>
+                        <li>Midjourney (if available)</li>
+                        <li>Stable Diffusion interfaces</li>
+                    </ul>
+                    
+                    <h4>⏰ Duration & Schedule</h4>
+                    <p><strong>Event Date:</strong> [Add your date here]</p>
+                    <p><strong>Total Duration:</strong> 1.5 hours</p>
+                    <p><strong>Reporting Time:</strong> [Add time] (15 minutes before start)</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p>[TO BE UPDATED - Add prize details here]</p>
+                    <p><strong>1st Prize:</strong> ₹[Amount] + Certificate + Trophy</p>
+                    <p><strong>2nd Prize:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>3rd Prize:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Most Creative Prompt:</strong> Special Recognition + Certificate</p>
                     
                     <h4>📜 Rules & Guidelines</h4>
-                    <p>[TO BE UPDATED - Add detailed rules here]</p>
+                    <ul>
+                        <li>Individual event - work alone</li>
+                        <li>Use only provided AI tools and platforms</li>
+                        <li>No external research or image references allowed</li>
+                        <li>Internet access restricted to AI platforms only</li>
+                        <li>Prompts must be original and created during the event</li>
+                        <li>Images shown will vary in complexity and style</li>
+                        <li>Multiple prompt iterations allowed within time limit</li>
+                        <li>Screenshots required for submission</li>
+                        <li>Inappropriate content prompts lead to disqualification</li>
+                    </ul>
                     
-                    <h4>👥 Team Size</h4>
-                    <p>[TO BE UPDATED - Individual/Team event details]</p>
+                    <h4>🎯 Skills Tested</h4>
+                    <ul>
+                        <li>Visual analysis and attention to detail</li>
+                        <li>Creative prompt engineering</li>
+                        <li>Understanding of AI image generation</li>
+                        <li>Quick adaptation and iteration</li>
+                    </ul>
                     
-                    <h4>📞 Contact</h4>
-                    <p>[TO BE UPDATED - Add coordinator contact details]</p>
+                    <h4>📊 Judging Criteria</h4>
+                    <ul>
+                        <li><strong>Accuracy (35%):</strong> How closely the generated image matches the original</li>
+                        <li><strong>Prompt Quality (30%):</strong> Clarity, specificity, and creativity of prompts</li>
+                        <li><strong>Technical Understanding (20%):</strong> Effective use of AI parameters</li>
+                        <li><strong>Speed (15%):</strong> Efficiency in achieving results</li>
+                    </ul>
+                    
+                    <h4>👥 Eligibility</h4>
+                    <p><strong>Team Size:</strong> Individual participation only</p>
+                    <p><strong>Eligible:</strong> All students interested in AI and creative technologies</p>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
                 `
             },
             stat: {
                 title: "Stat Wars",
                 content: `
                     <h4>📊 Event Overview</h4>
-                    <p>Analyze cricket stats, outthink rivals, and draft your dream team in a high-pressure mock auction. Data skills, budget strategy, and sharp judgment will decide the champion.</p>
+                    <p>Combine cricket knowledge with data analysis skills in this unique competition. Analyze player statistics, make strategic decisions, and participate in a high-pressure mock auction environment.</p>
                     
                     <h4>🏏 Event Format</h4>
-                    <p><strong>Phase 1:</strong> Statistical Analysis Round</p>
-                    <p><strong>Phase 2:</strong> Mock Auction</p>
-                    <p><strong>Phase 3:</strong> Team Strategy Presentation</p>
+                    <p><strong>Phase 1:</strong> Statistical Analysis Round (45 minutes) - Analyze player data and performance metrics</p>
+                    <p><strong>Phase 2:</strong> Mock Auction (60 minutes) - Strategic bidding and team building</p>
+                    <p><strong>Phase 3:</strong> Team Strategy Presentation (15 minutes) - Present your team and strategy</p>
                     
-                    <h4>⏰ Duration</h4>
-                    <p>[TO BE UPDATED - Add event timing]</p>
+                    <h4>📈 What You'll Analyze</h4>
+                    <ul>
+                        <li>Player batting and bowling averages</li>
+                        <li>Recent form and performance trends</li>
+                        <li>Match conditions and player suitability</li>
+                        <li>Cost-benefit analysis for team building</li>
+                    </ul>
+                    
+                    <h4>⏰ Duration & Schedule</h4>
+                    <p><strong>Event Date:</strong> [Add your date here]</p>
+                    <p><strong>Total Duration:</strong> 2.5 hours</p>
+                    <p><strong>Reporting Time:</strong> [Add time] (30 minutes before start)</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p>[TO BE UPDATED - Add prize details here]</p>
+                    <p><strong>Best Team Builder:</strong> ₹[Amount] + Certificate + Trophy</p>
+                    <p><strong>Best Strategist:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Most Analytical:</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Participation:</strong> Certificate for all participants</p>
                     
                     <h4>📜 Rules & Guidelines</h4>
-                    <p>[TO BE UPDATED - Add detailed rules here]</p>
+                    <ul>
+                        <li>Individual event - make your own decisions</li>
+                        <li>Budget constraints will be provided</li>
+                        <li>Player pool and stats provided during event</li>
+                        <li>No external cricket knowledge sources allowed</li>
+                        <li>Calculator permitted for calculations</li>
+                        <li>Team composition rules will be specified</li>
+                        <li>Auction strategies must be explained in presentation</li>
+                        <li>Fair play and sportsmanship expected</li>
+                        <li>Time limits strictly enforced</li>
+                    </ul>
                     
-                    <h4>👥 Team Size</h4>
-                    <p>[TO BE UPDATED - Individual/Team event details]</p>
+                    <h4>🧮 Skills Required</h4>
+                    <ul>
+                        <li>Basic cricket knowledge and rules</li>
+                        <li>Data analysis and interpretation</li>
+                        <li>Strategic thinking and planning</li>
+                        <li>Quick decision-making under pressure</li>
+                        <li>Budget management skills</li>
+                    </ul>
                     
-                    <h4>📞 Contact</h4>
-                    <p>[TO BE UPDATED - Add coordinator contact details]</p>
+                    <h4>📊 Judging Criteria</h4>
+                    <ul>
+                        <li><strong>Team Balance (30%):</strong> Well-rounded team composition</li>
+                        <li><strong>Budget Management (25%):</strong> Efficient use of resources</li>
+                        <li><strong>Strategic Thinking (25%):</strong> Logic behind player choices</li>
+                        <li><strong>Presentation (20%):</strong> Clear explanation of strategy</li>
+                    </ul>
+                    
+                    <h4>👥 Eligibility</h4>
+                    <p><strong>Team Size:</strong> Individual participation only</p>
+                    <p><strong>Eligible:</strong> All students with basic cricket knowledge</p>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
                 `
             },
             feudal: {
                 title: "Feudal Fortune",
                 content: `
                     <h4>💰 Event Overview</h4>
-                    <p>Bid for futuristic patents, sabotage rivals, and fuse your winnings into the ultimate product pitch. Outwit, outbid, and outlast your opponents in this high-stakes tech showdown.</p>
+                    <p>A strategic business simulation combining auction dynamics, competitive strategy, and innovation. Bid for futuristic patents, navigate corporate warfare, and create the ultimate product pitch.</p>
                     
                     <h4>🎯 Event Format</h4>
-                    <p><strong>Round 1:</strong> Patent Auction</p>
-                    <p><strong>Round 2:</strong> Strategic Sabotage</p>
-                    <p><strong>Round 3:</strong> Product Pitch Presentation</p>
+                    <p><strong>Round 1:</strong> Patent Auction (45 minutes) - Bid strategically for technology patents</p>
+                    <p><strong>Round 2:</strong> Strategic Sabotage (30 minutes) - Use action cards to influence competitors</p>
+                    <p><strong>Round 3:</strong> Product Pitch (20 minutes) - Present your innovative product concept</p>
                     
-                    <h4>⏰ Duration</h4>
-                    <p>[TO BE UPDATED - Add event timing]</p>
+                    <h4>🔧 Game Elements</h4>
+                    <ul>
+                        <li><strong>Patents:</strong> Various future-tech patents with different values</li>
+                        <li><strong>Action Cards:</strong> Strategic moves to hinder opponents</li>
+                        <li><strong>Budget Management:</strong> Limited funds for smart investments</li>
+                        <li><strong>Market Forces:</strong> Dynamic pricing and demand changes</li>
+                    </ul>
+                    
+                    <h4>⏰ Duration & Schedule</h4>
+                    <p><strong>Event Date:</strong> [Add your date here]</p>
+                    <p><strong>Total Duration:</strong> 2 hours</p>
+                    <p><strong>Reporting Time:</strong> [Add time] (20 minutes before start)</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p>[TO BE UPDATED - Add prize details here]</p>
+                    <p><strong>Corporate Mogul (1st):</strong> ₹[Amount] + Certificate + Trophy</p>
+                    <p><strong>Strategic Mastermind (2nd):</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Innovation Award (3rd):</strong> ₹[Amount] + Certificate</p>
+                    <p><strong>Best Pitch:</strong> Special Recognition + Certificate</p>
                     
                     <h4>📜 Rules & Guidelines</h4>
-                    <p>[TO BE UPDATED - Add detailed rules here]</p>
+                    <ul>
+                        <li>Individual event - no team collaboration</li>
+                        <li>Starting budget provided equally to all participants</li>
+                        <li>Auction rules: open bidding, increment limits apply</li>
+                        <li>Sabotage cards have specific usage rules</li>
+                        <li>Patent combinations create synergy bonuses</li>
+                        <li>Product pitch must use acquired patents</li>
+                        <li>All financial decisions must be tracked</li>
+                        <li>Fair play enforced - no personal conflicts</li>
+                        <li>Game master decisions are final</li>
+                    </ul>
                     
-                    <h4>👥 Team Size</h4>
-                    <p>[TO BE UPDATED - Individual/Team event details]</p>
+                    <h4>🧠 Skills Required</h4>
+                    <ul>
+                        <li>Strategic thinking and planning</li>
+                        <li>Risk assessment and management</li>
+                        <li>Quick decision-making under pressure</li>
+                        <li>Presentation and pitching skills</li>
+                        <li>Basic business acumen</li>
+                        <li>Competitive psychology understanding</li>
+                    </ul>
                     
-                    <h4>📞 Contact</h4>
-                    <p>[TO BE UPDATED - Add coordinator contact details]</p>
+                    <h4>📊 Scoring System</h4>
+                    <ul>
+                        <li><strong>Portfolio Value (35%):</strong> Final patent portfolio worth</li>
+                        <li><strong>Strategic Execution (25%):</strong> Effective use of sabotage and timing</li>
+                        <li><strong>Product Innovation (25%):</strong> Creativity and feasibility of final pitch</li>
+                        <li><strong>Presentation Skills (15%):</strong> Communication and persuasion</li>
+                    </ul>
+                    
+                    <h4>🎲 Game Components</h4>
+                    <ul>
+                        <li>Patent cards with varying technologies and values</li>
+                        <li>Action/Sabotage cards for strategic plays</li>
+                        <li>Budget tracking sheets</li>
+                        <li>Market condition updates</li>
+                        <li>Presentation materials</li>
+                    </ul>
+                    
+                    <h4>👥 Eligibility</h4>
+                    <p><strong>Team Size:</strong> Individual participation only</p>
+                    <p><strong>Eligible:</strong> All students interested in business strategy and innovation</p>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
                 `
             }
         };
@@ -1035,6 +1345,31 @@
         link.rel = 'prefetch';
         link.href = 'index.html';
         document.head.appendChild(link);
+
+        // Smooth scroll to registration section
+        function scrollToRegister() {
+            document.querySelector('.register-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // Add click handlers for event cards to show details
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make event cards clickable for better UX
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on the details button
+                    if (!e.target.closest('.btn-details')) {
+                        const detailsBtn = this.querySelector('.btn-details');
+                        if (detailsBtn) {
+                            detailsBtn.click();
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
