@@ -317,6 +317,175 @@
       transform: translateY(-1px);
     }
 
+    .contact-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .contact-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      max-width: 700px;
+      width: 100%;
+      color: #fff;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-family: 'Black Ops One', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-align: center;
+      text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+    }
+
+    .event-coordinators-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #06b6d4;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .coordinators-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .coordinator-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .coordinator-card:hover {
+      background: rgba(6, 182, 212, 0.1);
+      border-color: rgba(6, 182, 212, 0.3);
+      transform: translateY(-3px);
+    }
+
+    .coordinator-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .coordinator-phone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #06b6d4;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .coordinator-phone:hover {
+      color: #0ef;
+      text-decoration: none;
+    }
+
+    .phone-icon {
+      font-size: 1rem;
+    }
+
+    .email-section {
+      margin: 30px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+    }
+
+    .email-label {
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .email-copy-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .email-text {
+      color: #06b6d4;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .copy-email-btn {
+      background: rgba(6, 182, 212, 0.2);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #06b6d4;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .copy-email-btn:hover {
+      background: rgba(6, 182, 212, 0.3);
+      border-color: rgba(6, 182, 212, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .copy-email-btn.copied {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: rgba(34, 197, 94, 0.4);
+      color: #22c55e;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .contact-links a:hover {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: rgba(6, 182, 212, 0.5);
+      transform: translateY(-2px);
+      color: white;
+      text-decoration: none;
+    }
+
     /* Responsive Design */
     @media only screen and (max-width: 1200px) {
       .hero-text {
@@ -389,6 +558,30 @@
       .dept-img img {
         width: 45px !important;
         height: 45px !important;
+      }
+
+      .contact-box {
+        padding: 30px 20px;
+      }
+
+      .contact-box h2 {
+        font-size: 2rem;
+      }
+
+      .coordinators-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .email-copy-container {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
       }
     }
 
@@ -465,89 +658,27 @@
       .scroll-indicator div:last-child {
         font-size: 0.8rem !important;
       }
+
+      .coordinator-card {
+        padding: 15px;
+      }
+
+      .coordinator-name {
+        font-size: 1.1rem;
+      }
+
+      .coordinator-phone {
+        font-size: 0.9rem;
+      }
+
+      .contact-box h2 {
+        font-size: 1.8rem;
+      }
+
+      .event-coordinators-title {
+        font-size: 1rem;
+      }
     }
-    .contact-container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-}
-
-.contact-box {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  padding: 40px 30px;
-  max-width: 700px;
-  width: 100%;
-  color: #fff;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.contact-box h2 {
-  font-family: 'Black Ops One', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 25px;
-  text-align: center;
-  text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-}
-
-.coordinator {
-  margin-bottom: 20px;
-}
-
-.coordinator h5 {
-  margin: 0;
-  font-weight: 600;
-}
-
-.coordinator a {
-  color: #06b6d4;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.coordinator a:hover {
-  text-decoration: underline;
-  color: #0ef;
-}
-
-.contact-links {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.contact-links a {
-  display: inline-block;
-  margin: 10px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.contact-links a:hover {
-  background: rgba(6, 182, 212, 0.2);
-  border-color: rgba(6, 182, 212, 0.5);
-  transform: translateY(-2px);
-}
-
-@media only screen and (max-width: 768px) {
-  .contact-box {
-    padding: 30px 20px;
-  }
-
-  .contact-box h2 {
-    font-size: 2rem;
-  }
-}
-
-
   </style>
 </head>
 <body>
@@ -573,7 +704,7 @@
         <li><span class="separator">|</span></li>
         <li><a href="#events" onclick="scrollToEvents()">Events</a></li>
         <li><span class="separator">|</span></li>
-        <li><a href="#contact-container" onclick="scrollToContact()">Contact</a></li>
+        <li><a href="#contact" onclick="scrollToContact()">Contact</a></li>
       </ul>
     </div>
     
@@ -598,32 +729,54 @@
         <a href="events.html" class="events-btn">View All Events</a>
       </div>
     </section>
+
+    <!-- Contact Section -->
+    <section class="contact-container" id="contact">
+      <div class="contact-box">
+        <h2>CONTACT US</h2>
+        
+        <div class="event-coordinators-title">Event Coordinators</div>
+        
+        <div class="coordinators-grid">
+          <div class="coordinator-card">
+            <div class="coordinator-name">Nithish</div>
+            <a href="tel:+917418758787" class="coordinator-phone">
+              <span class="phone-icon">📞</span>
+              <span>+91 7418758787</span>
+            </a>
+          </div>
+          
+          <div class="coordinator-card">
+            <div class="coordinator-name">Kishore</div>
+            <a href="tel:+919342503004" class="coordinator-phone">
+              <span class="phone-icon">📞</span>
+              <span>+91 9342503004</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="email-section">
+          <span class="email-label">📧 Email</span>
+          <div class="email-copy-container">
+            <span class="email-text">strata@licet.ac.in</span>
+            <button class="copy-email-btn" id="copyEmailBtn" onclick="copyEmail()">
+              Copy Email
+            </button>
+          </div>
+        </div>
+
+        <div class="contact-links">
+          <a href="https://instagram.com/strata25" target="_blank">
+             Instagram
+          </a>
+          <a href="https://www.licet.ac.in" target="_blank">
+            <span>🌐</span> LICET Website
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
-    <div class="contact-container" id="contact-preview">
-  <div class="contact-box">
-    <h2>CONTACT US</h2>
 
-    <div class="coordinator">
-      <h5>Nithish</h5>
-      <p>Event Coordinator</p>
-      <p>📞 <a href="tel:+91 7418758787"></a> | +91 7418758787
-      </p>
-    </div>
-
-    <div class="coordinator">
-      <h5>Kishore</h5>
-      <p>Co-Coordinator</p>
-      <p>📞 <a href="tel:+91 9342503004"></a> |  +91 9342503004
-      </p>
-    </div>
-
-    <div class="contact-links">
-      <p>📧 strata@licet.ac.in</p>
-      <a href="https://instagram.com/strata25" target="_blank">📷 Instagram</a>
-      <a href="https://www.licet.ac.in" target="_blank">🌐 LICET Website</a>
-    </div>
-  </div>
-</div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script>
     function scrollToEvents() {
@@ -641,9 +794,44 @@
     }
 
     function scrollToContact() {
-      document.getElementById('contact-preview').scrollIntoView({
+      document.getElementById('contact').scrollIntoView({
         behavior: 'smooth',
         block: 'center'
+      });
+    }
+
+    // Email copy functionality
+    function copyEmail() {
+      const email = 'strata@licet.ac.in';
+      const button = document.getElementById('copyEmailBtn');
+      
+      // Copy to clipboard
+      navigator.clipboard.writeText(email).then(function() {
+        // Success feedback
+        button.textContent = '✓ Copied!';
+        button.classList.add('copied');
+        
+        // Reset button after 2 seconds
+        setTimeout(function() {
+          button.textContent = 'Copy Email';
+          button.classList.remove('copied');
+        }, 2000);
+      }).catch(function(err) {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        button.textContent = '✓ Copied!';
+        button.classList.add('copied');
+        
+        setTimeout(function() {
+          button.textContent = 'Copy Email';
+          button.classList.remove('copied');
+        }, 2000);
       });
     }
 
@@ -676,7 +864,7 @@
 
     // Smooth navigation link highlighting
     window.addEventListener('scroll', function() {
-      const sections = ['home', 'events-preview'];
+      const sections = ['home', 'events-preview', 'contact'];
       const navLinks = document.querySelectorAll('.nav-links a');
       
       let current = '';
@@ -691,15 +879,21 @@
       });
     });
 
-    // Preload events page for faster navigation
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.href = 'events.html';
-    document.head.appendChild(link);
-
-    // Enhanced loading experience
+    // Check URL hash on page load for direct linking
     window.addEventListener('load', function() {
       document.body.style.opacity = '1';
+      
+      // Handle URL fragments for direct navigation
+      const hash = window.location.hash;
+      if (hash === '#contact') {
+        setTimeout(() => {
+          scrollToContact();
+        }, 500);
+      } else if (hash === '#events') {
+        setTimeout(() => {
+          scrollToEvents();
+        }, 500);
+      }
       
       // Add subtle entrance animation
       const heroText = document.querySelector('.hero-text');
@@ -715,16 +909,27 @@
       }
     });
 
+    // Handle hash changes for navigation
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash;
+      if (hash === '#contact') {
+        scrollToContact();
+      } else if (hash === '#events') {
+        scrollToEvents();
+      } else if (hash === '#home') {
+        scrollToTop();
+      }
+    });
+
+    // Preload events page for faster navigation
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = 'events.html';
+    document.head.appendChild(link);
+
     // Add loading state
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease-in-out';
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
