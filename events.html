@@ -868,341 +868,280 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Event details data - You can easily update this section
+        // Event details data - Updated with new structures
         const eventDetails = {
             shogun: {
                 title: "Shogun's Pitch",
                 content: `
-                    <h4>🎯 Event Overview</h4>
-                    <p>Showcase your research skills and ideas with a well-crafted paper and presentation. Participants will demonstrate their ability to research, analyze, and present complex topics with clarity and originality.</p>
+                    <h4>📜 Event Overview</h4>
+                    <p>A two-round research paper presentation challenge where teams present original work, defend it with mastery, and compete for the title of the Shogun's finest scholars.</p>
                     
-                    <h4>📋 Event Format</h4>
-                    <p><strong>Phase 1:</strong> Research Paper Submission (Abstract + Full Paper)</p>
-                    <p><strong>Phase 2:</strong> Presentation Round (10-15 minutes + Q&A)</p>
+                    <h4>📋 Round 1 – Abstract & Concept</h4>
+                    <p><strong>Abstract Submission:</strong> Must be 150–300 words and submitted in .docx or .pdf format.</p>
                     
-                    <h4>⏰ Duration & Schedule</h4>
-                    <p><strong>Paper Submission Deadline:</strong> [Add your date here]</p>
-                    <p><strong>Presentation Day:</strong> [Add your date here]</p>
-                    <p><strong>Presentation Time:</strong> 12 minutes presentation + 3 minutes Q&A</p>
+                    <p><strong>Abstract must include:</strong></p>
+                    <ul>
+                        <li>Title of the paper</li>
+                        <li>Author(s) name, institution, and contact details</li>
+                    </ul>
+                    
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>A participant cannot be in multiple teams for this event</li>
+                        <li>The same paper cannot be registered under multiple departments</li>
+                    </ul>
+                    
+                    <p><strong>Selection:</strong> Only shortlisted teams from Round 1 advance to Round 2. Results will be announced after Round 1.</p>
+                    
+                    <h4>🎯 Round 2 – The Shogun's Arena (Final Presentation)</h4>
+                    <p><strong>Objective:</strong> Deliver your research with mastery and defend it against the panel's questions.</p>
+                    
+                    <p><strong>Full Paper Guidelines:</strong></p>
+                    <ul>
+                        <li><strong>Length:</strong> 6–10 pages</li>
+                        <li><strong>Structure:</strong> Title page, abstract, author(s) name, institution, introduction, methodology, results/discussion, conclusion & future scope, references</li>
+                    </ul>
+                    
+                    <p><strong>Presentation:</strong></p>
+                    <ul>
+                        <li><strong>Format:</strong> PPT only</li>
+                        <li><strong>Duration:</strong> 7 minutes presentation + 3 minutes Q&A</li>
+                    </ul>
+                    
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Participants must adhere to the time constraint</li>
+                        <li>All team members must be ready to answer questions</li>
+                        <li>Plagiarism >20% leads to disqualification</li>
+                        <li>Exceeding the time limit will affect scores</li>
+                        <li>Final paper & PPT must be submitted to the event coordinators</li>
+                    </ul>
+                    
+                    <h4>📊 Evaluation Criteria</h4>
+                    <ul>
+                        <li><strong>Content Quality</strong> – originality, depth of research, clarity</li>
+                        <li><strong>Presentation Skills</strong> – clarity, confidence, engagement</li>
+                        <li><strong>Relevance to Theme</strong> – alignment with symposium focus</li>
+                        <li><strong>Q&A Handling</strong> – ability to defend and explain your work</li>
+                    </ul>
+                    
+                    <p><strong>Judges' decision:</strong> Final and binding, no appeals allowed</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p><strong>1st Prize:</strong> ₹[Amount] + Certificate + Trophy</p>
-                    <p><strong>2nd Prize:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>3rd Prize:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Participation:</strong> Certificate for all participants</p>
-                    
-                    <h4>📜 Rules & Guidelines</h4>
                     <ul>
-                        <li>Individual event - no team participation allowed</li>
-                        <li>Research paper must be original work (no plagiarism)</li>
-                        <li>Word limit: 3000-5000 words (excluding references)</li>
-                        <li>Topics must be related to [Specify your domain/field]</li>
-                        <li>IEEE format mandatory for paper submission</li>
-                        <li>Presentation slides mandatory (PowerPoint/PDF)</li>
-                        <li>Use of references and citations required</li>
-                        <li>All submissions must be in English</li>
-                        <li>Late submissions will not be accepted</li>
-                        <li>Judges' decision will be final</li>
+                        <li>Cash prizes for Top 3 teams</li>
+                        <li>Certificates for all participants</li>
                     </ul>
-                    
-                    <h4>📊 Judging Criteria</h4>
-                    <ul>
-                        <li><strong>Research Quality (30%):</strong> Depth, accuracy, and originality</li>
-                        <li><strong>Content Organization (25%):</strong> Structure and flow</li>
-                        <li><strong>Presentation Skills (25%):</strong> Clarity, confidence, timing</li>
-                        <li><strong>Q&A Handling (20%):</strong> Knowledge demonstration</li>
-                    </ul>
-                    
-                    <h4>👥 Eligibility</h4>
-                    <p><strong>Team Size:</strong> Individual participation only</p>
-                    <p><strong>Eligible:</strong> All undergraduate and postgraduate students</p>
                     
                     <h4>📞 Event Coordinators</h4>
-                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
-                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
                 `
             },
             syntax: {
                 title: "Syntax Strike",
                 content: `
                     <h4>⚡ Event Overview</h4>
-                    <p>A high-intensity coding competition testing your programming skills across multiple languages. Hunt bugs, solve problems, and demonstrate your coding prowess under pressure.</p>
+                    <p>A 2-round coding competition where participants identify errors and solve a Movie/Series mystery, with prizes and certificates for winners and participants.</p>
                     
-                    <h4>💻 Programming Languages</h4>
+                    <h4>🔍 Round 1 – Finding Errors</h4>
+                    <p>A set of 12 code snippets will be provided:</p>
                     <ul>
-                        <li><strong>C Programming:</strong> Debugging and problem-solving</li>
-                        <li><strong>Python:</strong> Algorithm implementation and optimization</li>
-                        <li><strong>Java:</strong> Object-oriented programming challenges</li>
+                        <li>5 Python code snippets</li>
+                        <li>4 C programming code snippets</li>
+                        <li>3 Java code snippets</li>
                     </ul>
                     
-                    <h4>🎯 Event Structure</h4>
-                    <p><strong>Round 1:</strong> Bug Hunt (30 minutes) - Find and fix errors in given code</p>
-                    <p><strong>Round 2:</strong> Speed Coding (45 minutes) - Solve programming problems</p>
-                    <p><strong>Round 3:</strong> Algorithm Challenge (60 minutes) - Complex problem solving</p>
+                    <p>Participants will identify errors in each code snippet.</p>
+                    <p>Participants with the best performance in Round 1 will be selected for Round 2.</p>
                     
-                    <h4>⏰ Duration & Schedule</h4>
-                    <p><strong>Event Date:</strong> [Add your date here]</p>
-                    <p><strong>Total Duration:</strong> 2.5 hours (including breaks)</p>
-                    <p><strong>Reporting Time:</strong> [Add time] (30 minutes before start)</p>
-                    
-                    <h4>🏆 Prizes</h4>
-                    <p><strong>1st Prize:</strong> ₹[Amount] + Certificate + Trophy</p>
-                    <p><strong>2nd Prize:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>3rd Prize:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Participation:</strong> Certificate for all participants</p>
-                    
-                    <h4>📜 Rules & Guidelines</h4>
+                    <h4>🎬 Round 2 – Main Challenge</h4>
                     <ul>
-                        <li>Individual event - no collaboration allowed</li>
-                        <li>Use of online compilers/IDEs provided only</li>
-                        <li>No external help or internet browsing permitted</li>
-                        <li>Bring your own laptop (backup systems available)</li>
-                        <li>Code comments encouraged for partial marks</li>
-                        <li>Time limits strictly enforced for each round</li>
-                        <li>Cheating/unfair practices lead to disqualification</li>
-                        <li>Mobile phones must be switched off</li>
-                        <li>Participants must arrive on time</li>
+                        <li>Participants who qualify will be given a general hint to identify a Movie/Series</li>
+                        <li>Along with the main question, participants will also receive additional coding challenges</li>
+                        <li>Each coding challenge solved correctly will earn points and provide a clue to the main question</li>
                     </ul>
                     
-                    <h4>💻 Technical Requirements</h4>
+                    <h4>🎁 Merchandise Surprise</h4>
+                    <p>Participants who correctly identify the Movie/Series will be rewarded with themed merchandise related to it.</p>
+                    
+                    <h4>🏆 Winners Qualification</h4>
                     <ul>
-                        <li>Basic knowledge of C, Python, and Java</li>
-                        <li>Understanding of data structures and algorithms</li>
-                        <li>Debugging and problem-solving skills</li>
-                        <li>Time management under pressure</li>
+                        <li>The participant who correctly identifies the main question first will receive bonus points</li>
+                        <li>The top positions will be determined based on total points earned</li>
+                        <li>The top 3 winners will be awarded prizes</li>
                     </ul>
                     
-                    <h4>📊 Scoring System</h4>
+                    <h4>🏅 Awards</h4>
                     <ul>
-                        <li><strong>Correctness (40%):</strong> Code functionality and accuracy</li>
-                        <li><strong>Efficiency (30%):</strong> Time and space complexity</li>
-                        <li><strong>Speed (20%):</strong> Completion time</li>
-                        <li><strong>Code Quality (10%):</strong> Readability and structure</li>
+                        <li>Winners will receive an in-hand certificate</li>
+                        <li>All participants will receive a certificate</li>
                     </ul>
                     
-                    <h4>👥 Eligibility</h4>
-                    <p><strong>Team Size:</strong> Individual participation only</p>
-                    <p><strong>Eligible:</strong> All students with basic programming knowledge</p>
+                    <h4>📜 Rules</h4>
+                    <ul>
+                        <li>Participants must adhere to the rules and regulations of the competition</li>
+                        <li>Judges' decision is final and binding</li>
+                        <li>By participating, contestants acknowledge they have read, understood, and agreed to the rules</li>
+                    </ul>
+                    
+                    <h4>💰 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 participants</li>
+                        <li>Certificates for all participants</li>
+                    </ul>
                     
                     <h4>📞 Event Coordinators</h4>
-                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
-                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
                 `
             },
             scroll: {
                 title: "Scroll Trace",
                 content: `
-                    <h4>🔍 Event Overview</h4>
-                    <p>Test your visual analysis and AI prompt engineering skills. Participants will view images and craft precise prompts to recreate them using AI tools, combining creativity with technical precision.</p>
-                    
-                    <h4>🎨 Event Format</h4>
-                    <p><strong>Round 1:</strong> Image Analysis (20 minutes) - Describe given images in detail</p>
-                    <p><strong>Round 2:</strong> Prompt Crafting (30 minutes) - Create AI prompts for image generation</p>
-                    <p><strong>Round 3:</strong> AI Generation Challenge (25 minutes) - Generate and refine images</p>
-                    
-                    <h4>🤖 AI Tools Provided</h4>
+                    <h4>👥 Eligibility & Teaming</h4>
                     <ul>
-                        <li>DALL-E 2/3 or similar image generation tools</li>
-                        <li>Midjourney (if available)</li>
-                        <li>Stable Diffusion interfaces</li>
+                        <li>Open to individuals</li>
+                        <li>Each participant must bring their own laptop</li>
                     </ul>
                     
-                    <h4>⏰ Duration & Schedule</h4>
-                    <p><strong>Event Date:</strong> [Add your date here]</p>
-                    <p><strong>Total Duration:</strong> 1.5 hours</p>
-                    <p><strong>Reporting Time:</strong> [Add time] (15 minutes before start)</p>
-                    
-                    <h4>🏆 Prizes</h4>
-                    <p><strong>1st Prize:</strong> ₹[Amount] + Certificate + Trophy</p>
-                    <p><strong>2nd Prize:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>3rd Prize:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Most Creative Prompt:</strong> Special Recognition + Certificate</p>
-                    
-                    <h4>📜 Rules & Guidelines</h4>
+                    <h4>📋 General Guidelines</h4>
                     <ul>
-                        <li>Individual event - work alone</li>
-                        <li>Use only provided AI tools and platforms</li>
-                        <li>No external research or image references allowed</li>
-                        <li>Internet access restricted to AI platforms only</li>
-                        <li>Prompts must be original and created during the event</li>
-                        <li>Images shown will vary in complexity and style</li>
-                        <li>Multiple prompt iterations allowed within time limit</li>
-                        <li>Screenshots required for submission</li>
-                        <li>Inappropriate content prompts lead to disqualification</li>
+                        <li>All prompts must be typed only in the instructed platforms—no other AI platforms (like ChatGPT, Midjourney, etc.) are allowed</li>
+                        <li>No use of mobile phones or external help during the challenge</li>
+                        <li>Judges' decisions are final and binding</li>
                     </ul>
                     
-                    <h4>🎯 Skills Tested</h4>
+                    <h4>🎯 Round 1 – Spin & Show</h4>
                     <ul>
-                        <li>Visual analysis and attention to detail</li>
-                        <li>Creative prompt engineering</li>
-                        <li>Understanding of AI image generation</li>
-                        <li>Quick adaptation and iteration</li>
+                        <li><strong>Task:</strong> Spin the wheel to get a random theme</li>
+                        <li><strong>Goal:</strong> Create and display an accurate output related to the theme</li>
+                        <li><strong>Tip:</strong> Precision & creativity win points!</li>
+                    </ul>
+                    
+                    <h4>🔍 Round 2 – Secret Prompt Match</h4>
+                    <ul>
+                        <li><strong>Task:</strong> All qualified teams get one surprise topic</li>
+                        <li><strong>Goal:</strong> Write a short, specific prompt for image generation</li>
+                        <li><strong>Winning Criteria:</strong> Generated image must match host's reference output</li>
+                    </ul>
+                    
+                    <h4>📖 Round 3 – Story in Contrast</h4>
+                    <ul>
+                        <li><strong>Task:</strong> Based on the given image, create a story</li>
+                        <li><strong>Twist:</strong> Story must follow two contrast emotion keywords (e.g., Happy Ending + Mystery, Thriller + Fiction)</li>
+                        <li>Word limit applies strictly</li>
+                        <li>Round 3 will feature a suspense-filled task revealed on the spot</li>
+                        <li><strong>Goal:</strong> Blend emotions creatively while staying on theme</li>
                     </ul>
                     
                     <h4>📊 Judging Criteria</h4>
                     <ul>
-                        <li><strong>Accuracy (35%):</strong> How closely the generated image matches the original</li>
-                        <li><strong>Prompt Quality (30%):</strong> Clarity, specificity, and creativity of prompts</li>
-                        <li><strong>Technical Understanding (20%):</strong> Effective use of AI parameters</li>
-                        <li><strong>Speed (15%):</strong> Efficiency in achieving results</li>
+                        <li>Closeness to the original hidden prompt</li>
+                        <li>Logical reasoning & explanation</li>
+                        <li>Number of iterations used</li>
+                        <li>Prompt brevity</li>
+                        <li>Clarity & innovation</li>
                     </ul>
                     
-                    <h4>👥 Eligibility</h4>
-                    <p><strong>Team Size:</strong> Individual participation only</p>
-                    <p><strong>Eligible:</strong> All students interested in AI and creative technologies</p>
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 participants</li>
+                        <li>Certificates for all participants</li>
+                    </ul>
                     
                     <h4>📞 Event Coordinators</h4>
-                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
-                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
                 `
             },
             stat: {
                 title: "Stat Wars",
                 content: `
                     <h4>📊 Event Overview</h4>
-                    <p>Combine cricket knowledge with data analysis skills in this unique competition. Analyze player statistics, make strategic decisions, and participate in a high-pressure mock auction environment.</p>
+                    <p>Stat Wars is a fast-paced, cricket-themed strategy event where teams dive into player data, crack smart questions, and build their dream team through a mock auction. It tests analytical thinking, time management, and decision-making under pressure.</p>
                     
-                    <h4>🏏 Event Format</h4>
-                    <p><strong>Phase 1:</strong> Statistical Analysis Round  - Analyze player data and performance metrics</p>
-                    <p><strong>Phase 2:</strong> Mock Auction (60 minutes) - Strategic bidding and team building</p>
-                    <p><strong>Phase 3:</strong> Team Strategy Presentation (5 minutes) - Present your team and strategy</p>
-                    
-                    <h4>📈 What You'll Analyze</h4>
+                    <h4>🔍 Round 1 – Stat Hacker (Qualifier Round)</h4>
                     <ul>
-                        <li>Player batting and bowling averages</li>
-                        <li>Recent form and performance trends</li>
-                        <li>Match conditions and player suitability</li>
-                        <li>Cost-benefit analysis for team building</li>
+                        <li>Teams will be given a cricket dataset</li>
+                        <li>Solve a mix of MCQs, quick calculations, and logic-based scenarios (on paper)</li>
+                        <li>Top 6–8 teams with the best scores qualify for the final round</li>
                     </ul>
                     
-                    <h4>⏰ Duration & Schedule</h4>
-                    <p><strong>Event Date:</strong>23-08-2025</p>
-                    <p><strong>Total Duration:</strong>9 AM -2 PM</p>
-                    <p><strong>Reporting Time:</strong> 8.30 (30 minutes before start)</p>
+                    <h4>🏏 Round 2 – Mock Auction (Final Round)</h4>
+                    <ul>
+                        <li>Qualified teams get ₹50 Cr virtual budget and a new player dataset</li>
+                        <li>Players are auctioned one by one; teams must bid wisely to build a balanced squad</li>
+                        <li>Once the auction ends, each team presents their final team and explains their choices</li>
+                        <li>Balance, strategy, and justification will affect scores</li>
+                    </ul>
+                    
+                    <h4>👥 Team Size</h4>
+                    <p>2–3 members</p>
+                    
+                    <h4>📋 Materials Provided</h4>
+                    <p>Datasets, stationery, and scoring sheets</p>
                     
                     <h4>🏆 Prizes</h4>
-                    <p><strong>Best Team Builder:</strong> ₹[Amount] + Certificate + Trophy</p>
-                    <p><strong>Best Strategist:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Most Analytical:</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Participation:</strong> Certificate for all participants</p>
-                    
-                    <h4>📜 Rules & Guidelines</h4>
                     <ul>
-                        <li>Team event - Team coordination</li>
-                        <li>Budget constraints will be provided</li>
-                        <li>Player pool and stats provided during event</li>
-                        <li>No external cricket knowledge sources allowed</li>
-                        <li>Calculator  permitted for calculations</li>
-                        <li>Team composition rules will be specified</li>
-                        <li>Auction strategies must be explained in presentation</li>
-                        <li>Fair play and sportsmanship expected</li>
-                        <li>Time limits strictly enforced</li>
+                        <li>Cash prizes for Top 3 teams</li>
+                        <li>Certificates for all participants</li>
                     </ul>
-                    
-                    <h4>🧮 Skills Required</h4>
-                    <ul>
-                        <li>Basic cricket knowledge and rules</li>
-                        <li>Data analysis and interpretation</li>
-                        <li>Strategic thinking and planning</li>
-                        <li>Quick decision-making under pressure</li>
-                        <li>Budget management skills</li>
-                    </ul>
-                    
-                    <h4>📊 Judging Criteria</h4>
-                    <ul>
-                        <li><strong>Team Balance (30%):</strong> Well-rounded team composition</li>
-                        <li><strong>Budget Management (25%):</strong> Efficient use of resources</li>
-                        <li><strong>Strategic Thinking (25%):</strong> Logic behind player choices</li>
-                        <li><strong>Presentation (20%):</strong> Clear explanation of strategy</li>
-                    </ul>
-                    
-                    <h4>👥 Eligibility</h4>
-                    <p><strong>Team Size:</strong>Team participation </p>
-                    <p><strong>Eligible:</strong> All students with basic cricket knowledge</p>
                     
                     <h4>📞 Event Coordinators</h4>
-                    <p><strong>Event Coordinator:</strong> Dario J - 9487369647 </p>
-                    <p><strong>Co-Coordinator:</strong>  -  </p>
-                    
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
                 `
             },
             feudal: {
                 title: "Feudal Fortune",
                 content: `
                     <h4>💰 Event Overview</h4>
-                    <p>A strategic business simulation combining auction dynamics, competitive strategy, and innovation. Bid for futuristic patents, navigate corporate warfare, and create the ultimate product pitch.</p>
+                    <p><strong>Tagline:</strong> <em>Bid. Betray. Build.</em></p>
+                    <p>Step into the role of a tech warlord in a futuristic feudal era where power isn't measured in land, but in patents. This is a strategic business simulation combining auction dynamics, competitive strategy, and innovation. Your mission: Outbid, outsmart, and outpitch your rivals to claim ultimate dominance.</p>
                     
-                    <h4>🎯 Event Format</h4>
-                    <p><strong>Round 1:</strong> Patent Auction (45 minutes) - Bid strategically for technology patents</p>
-                    <p><strong>Round 2:</strong> Strategic Sabotage (30 minutes) - Use action cards to influence competitors</p>
-                    <p><strong>Round 3:</strong> Product Pitch (20 minutes) - Present your innovative product concept</p>
-                    
-                    <h4>🔧 Game Elements</h4>
+                    <h4>⚔️ Round 1 – The Patent Auction</h4>
                     <ul>
-                        <li><strong>Patents:</strong> Various future-tech patents with different values</li>
-                        <li><strong>Action Cards:</strong> Strategic moves to hinder opponents</li>
-                        <li><strong>Budget Management:</strong> Limited funds for smart investments</li>
-                        <li><strong>Market Forces:</strong> Dynamic pricing and demand changes</li>
+                        <li>All teams start with equal virtual credits</li>
+                        <li>Patents are revealed one at a time for bidding</li>
+                        <li>Some <strong>mystery patents</strong> will appear — only the buyer will know what they are</li>
+                        <li>Midway through, expect a surprise challenge that could give an advantage</li>
+                        <li>End of Round: Use your patents to create an innovative product idea</li>
+                        <li>The best teams from Round 1 will advance to the Final Round</li>
                     </ul>
                     
-                    <h4>⏰ Duration & Schedule</h4>
-                    <p><strong>Event Date:</strong> [Add your date here]</p>
-                    <p><strong>Total Duration:</strong> 2 hours</p>
-                    <p><strong>Reporting Time:</strong> [Add time] (20 minutes before start)</p>
+                    <h4>🏴‍☠️ Round 2 – The Final Battle</h4>
+                    <ul>
+                        <li>More patents enter the auction</li>
+                        <li><strong>Sabotage opportunities</strong> are introduced — use them wisely to disrupt rivals</li>
+                        <li>Mystery elements and challenges will keep the game unpredictable</li>
+                        <li>Final task: Build your ultimate product pitch using patents from both rounds</li>
+                    </ul>
+                    
+                    <h4>📋 Event Info</h4>
+                    <ul>
+                        <li><strong>Duration:</strong> 1.5 – 2 hrs</li>
+                        <li><strong>Team Size:</strong> 2–3 members</li>
+                        <li><strong>Venue & Time:</strong> [To be announced]</li>
+                    </ul>
+                    
+                    <h4>📊 Judging Criteria</h4>
+                    <ul>
+                        <li><strong>Portfolio Value (35%)</strong> – Final patent portfolio worth</li>
+                        <li><strong>Strategic Execution (25%)</strong> – Effective use of sabotage and timing</li>
+                        <li><strong>Product Innovation (25%)</strong> – Creativity and feasibility of final pitch</li>
+                        <li><strong>Presentation Skills (15%)</strong> – Communication and persuasion</li>
+                    </ul>
                     
                     <h4>🏆 Prizes</h4>
-                    <p><strong>Corporate Mogul (1st):</strong> ₹[Amount] + Certificate + Trophy</p>
-                    <p><strong>Strategic Mastermind (2nd):</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Innovation Award (3rd):</strong> ₹[Amount] + Certificate</p>
-                    <p><strong>Best Pitch:</strong> Special Recognition + Certificate</p>
-                    
-                    <h4>📜 Rules & Guidelines</h4>
                     <ul>
-                        <li>Individual event - no team collaboration</li>
-                        <li>Starting budget provided equally to all participants</li>
-                        <li>Auction rules: open bidding, increment limits apply</li>
-                        <li>Sabotage cards have specific usage rules</li>
-                        <li>Patent combinations create synergy bonuses</li>
-                        <li>Product pitch must use acquired patents</li>
-                        <li>All financial decisions must be tracked</li>
-                        <li>Fair play enforced - no personal conflicts</li>
-                        <li>Game master decisions are final</li>
+                        <li><strong>Cash prizes</strong> for Top 3 teams</li>
+                        <li><strong>Certificates</strong> for all participants</li>
                     </ul>
-                    
-                    <h4>🧠 Skills Required</h4>
-                    <ul>
-                        <li>Strategic thinking and planning</li>
-                        <li>Risk assessment and management</li>
-                        <li>Quick decision-making under pressure</li>
-                        <li>Presentation and pitching skills</li>
-                        <li>Basic business acumen</li>
-                        <li>Competitive psychology understanding</li>
-                    </ul>
-                    
-                    <h4>📊 Scoring System</h4>
-                    <ul>
-                        <li><strong>Portfolio Value (35%):</strong> Final patent portfolio worth</li>
-                        <li><strong>Strategic Execution (25%):</strong> Effective use of sabotage and timing</li>
-                        <li><strong>Product Innovation (25%):</strong> Creativity and feasibility of final pitch</li>
-                        <li><strong>Presentation Skills (15%):</strong> Communication and persuasion</li>
-                    </ul>
-                    
-                    <h4>🎲 Game Components</h4>
-                    <ul>
-                        <li>Patent cards with varying technologies and values</li>
-                        <li>Action/Sabotage cards for strategic plays</li>
-                        <li>Budget tracking sheets</li>
-                        <li>Market condition updates</li>
-                        <li>Presentation materials</li>
-                    </ul>
-                    
-                    <h4>👥 Eligibility</h4>
-                    <p><strong>Team Size:</strong> Individual participation only</p>
-                    <p><strong>Eligible:</strong> All students interested in business strategy and innovation</p>
                     
                     <h4>📞 Event Coordinators</h4>
-                    <p><strong>Student Coordinator:</strong> [Name] - [Phone] - [Email]</p>
-                    <p><strong>Faculty Coordinator:</strong> [Name] - [Phone] - [Email]</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
                 `
             }
         };
@@ -1213,8 +1152,6 @@
                 behavior: 'smooth'
             });
         }
-
-       
 
         // Show event details modal
         function showEventDetails(eventId) {
