@@ -1,991 +1,1310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>STRATA'25</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow-x: hidden;
-      position: relative;
-      scroll-behavior: smooth;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    /* Fallback background for when video doesn't load */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #0a1929 0%, #1e3a8a 50%, #1e40af 100%);
-      z-index: -3;
-    }
-
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;  
-      height: 100vh;
-      z-index: -2;
-    }
-
-    .bg-video video {
-      width: 100vw;  
-      height: 100vh; 
-      object-fit: cover;
-    }
-
-    /* Video overlay with transparent blur effect */
-    .video-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.1);
-      transition: all 0.5s ease;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .video-overlay.scrolled {
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(8px);
-    }
-
-    /* Main container to prevent content overlap */
-    .main-container {
-      position: relative;
-      min-height: 200vh;
-      z-index: 1;
-    }
-
-    .logo-img {
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      z-index: 1000;
-      transition: transform 0.3s ease;
-    }
-
-    .logo-img:hover {
-      transform: scale(1.05);
-    }
-
-    .logo-img img {
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-      border-radius: 8px;
-    }
-
-    .logo-img img:hover {
-      opacity: 0.9;
-    }
-
-    .nav-links {
-      position: fixed;
-      top: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      border-radius: 25px;
-      padding: 8px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .nav-links ul {
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      list-style-type: none;
-    }
-
-    .nav-links ul li {
-      margin: 0 15px;
-    }
-
-    .nav-links ul li a {
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      color: rgb(255, 255, 255);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      padding: 8px 12px;
-      border-radius: 15px;
-      display: block;
-    }
-
-    .nav-links ul li a:hover {
-      color: #06b6d4;
-      background: rgba(6, 182, 212, 0.15);
-      text-shadow: 0 0 10px #06b6d4;
-    }
-
-    .separator {
-      color: rgba(255, 255, 255, 0.6);
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      margin: 0 5px;
-    }
-
-    .hero-section {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero-text {
-      font-family: "Black Ops One", system-ui;
-      font-size: 180px;
-      color: rgb(243, 243, 244);
-      opacity: 0.9;
-      text-align: center;
-      white-space: nowrap;
-      text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
-      animation: glow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 30px rgba(6, 182, 212, 0.3); }
-      to { text-shadow: 0 0 50px rgba(6, 182, 212, 0.5), 0 0 70px rgba(6, 182, 212, 0.3); }
-    }
-
-    .dept-img {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 1000;
-      transition: transform 0.3s ease;
-    }
-
-    .dept-img:hover {
-      transform: scale(1.05);
-    }
-
-    .dept-img img {
-      border-radius: 8px;
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      text-align: center;
-      cursor: pointer;
-      animation: bounce 2s infinite;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 20px;
-      padding: 15px 20px;
-      transition: all 0.3s ease;
-    }
-
-    .scroll-indicator:hover {
-      background: rgba(6, 182, 212, 0.15);
-      border-color: rgba(6, 182, 212, 0.4);
-      transform: translateX(-50%) translateY(-5px);
-    }
-
-    .scroll-indicator:focus {
-      outline: none;
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) translateX(-50%);
-      }
-      40% {
-        transform: translateY(-15px) translateX(-50%);
-      }
-      60% {
-        transform: translateY(-8px) translateX(-50%);
-      }
-    }
-
-    /* Events section that appears on scroll */
-    .events-section {
-      height: 100vh;
-      background: transparent;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 50px 20px;
-      z-index: 1;
-    }
-
-    .events-preview {
-      text-align: center;
-      color: white;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      padding: 60px 50px;
-      border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-      max-width: 800px;
-      width: 90%;
-      transition: all 0.3s ease;
-    }
-
-    .events-preview:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
-      border-color: rgba(6, 182, 212, 0.4);
-    }
-
-    .events-preview h2 {
-      font-family: 'Black Ops One', cursive;
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      color: #ffffff;
-      text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-    }
-
-    .events-preview p {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 2.5rem;
-      opacity: 0.9;
-      line-height: 1.6;
-    }
-
-    .events-btn {
-      display: inline-block;
-      padding: 18px 40px;
-      background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: all 0.4s ease;
-      border: 2px solid rgba(6, 182, 212, 0.6);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .events-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .events-btn:hover::before {
-      left: 100%;
-    }
-
-    .events-btn:hover {
-      background: linear-gradient(135deg, #0891b2, #0e7490, #155e75);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(6, 182, 212, 0.5);
-      color: white;
-      text-decoration: none;
-      border-color: rgba(6, 182, 212, 0.8);
-    }
-
-    .events-btn:active {
-      transform: translateY(-1px);
-    }
-
-    .contact-container {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 20px;
-    }
-
-    .contact-box {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(20px);
-      border-radius: 20px;
-      padding: 40px 30px;
-      max-width: 700px;
-      width: 100%;
-      color: #fff;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-
-    .contact-box h2 {
-      font-family: 'Black Ops One', cursive;
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      text-align: center;
-      text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-    }
-
-    .event-coordinators-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #ffffff; /* Changed from #06b6d4 to white */
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .coordinators-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .coordinator-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .coordinator-card:hover {
-      background: rgba(6, 182, 212, 0.1);
-      border-color: rgba(6, 182, 212, 0.3);
-      transform: translateY(-3px);
-    }
-
-    .coordinator-name {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #ffffff;
-    }
-
-    .coordinator-phone {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #ffffff; /* Changed from #06b6d4 to white */
-      text-decoration: none;
-      font-size: 1rem;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-
-    .coordinator-phone:hover {
-      color: #06b6d4; /* Hover effect remains aqua */
-      text-decoration: none;
-    }
-
-    .phone-icon {
-      font-size: 1rem;
-      color: #ffffff; /* Ensure icon is white */
-    }
-
-
-    .email-section {
-      margin: 30px 0;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      margin-bottom: 40px;
-    }
-
-    .email-label {
-      font-size: 1rem;
-      color: #ffffff;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    .email-copy-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .phone-copied {
-      color: #22c55e !important;
-    }
-
-    .email-text {
-      color: #06b6d4;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
-    
-
-    .copy-email-btn {
-      background: rgba(6, 182, 212, 0.2);
-      border: 1px solid rgba(6, 182, 212, 0.4);
-      color: #06b6d4;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .copy-email-btn:hover {
-      background: rgba(6, 182, 212, 0.3);
-      border-color: rgba(6, 182, 212, 0.6);
-      transform: translateY(-2px);
-    }
-
-    .copy-email-btn.copied {
-      background: rgba(34, 197, 94, 0.2);
-      border-color: rgba(34, 197, 94, 0.4);
-      color: #22c55e;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .contact-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 20px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 25px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
-    }
-
-    .contact-links a:hover {
-      background: rgba(6, 182, 212, 0.2);
-      border-color: rgba(6, 182, 212, 0.5);
-      transform: translateY(-2px);
-      color: white;
-      text-decoration: none;
-    }
-
-    /* Responsive Design */
-    @media only screen and (max-width: 1200px) {
-      .hero-text {
-        font-size: 140px;
-      }
-    }
-
-    @media only screen and (max-width: 992px) {
-      .hero-text {
-        font-size: 120px;
-      }
-    }
-
-    @media only screen and (max-width: 768px) {
-      .nav-links ul li a {
-        font-size: 12px;
-        padding: 6px 8px;
-      }
-      
-      .nav-links ul li {
-        margin: 0 6px;
-      }
-      
-      .nav-links {
-        padding: 6px 12px;
-        top: 10px;
-      }
-      
-      .separator {
-        font-size: 12px;
-        margin: 0 3px;
-      }
-      
-      .hero-text {
-        font-size: 80px;
-      }
-
-      .events-preview h2 {
-        font-size: 2.2rem;
-      }
-
-      .events-preview {
-        padding: 40px 30px;
-      }
-
-      .events-preview p {
-        font-size: 1.1rem;
-      }
-
-      .events-btn {
-        padding: 15px 30px;
-        font-size: 1rem;
-      }
-
-      .logo-img {
-        top: 12px;
-        left: 12px;
-      }
-
-      .logo-img img {
-        width: 45px !important;
-        height: 45px !important;
-      }
-
-      .dept-img {
-        top: 12px;
-        right: 12px;
-      }
-
-      .dept-img img {
-        width: 45px !important;
-        height: 45px !important;
-      }
-
-      .contact-box {
-        padding: 30px 20px;
-      }
-
-      .contact-box h2 {
-        font-size: 2rem;
-      }
-
-      .coordinators-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .email-copy-container {
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .contact-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-      }
-    }
-
-    @media only screen and (max-width: 480px) {
-      .nav-links {
-        top: 8px;
-        padding: 4px 10px;
-      }
-      
-      .nav-links ul li a {
-        font-size: 10px;
-        padding: 4px 6px;
-      }
-      
-      .nav-links ul li {
-        margin: 0 3px;
-      }
-      
-      .separator {
-        font-size: 10px;
-        margin: 0 2px;
-      }
-      
-      .hero-text {
-        font-size: 50px;
-      }
-      
-      .logo-img {
-        top: 8px;
-        left: 8px;
-      }
-      
-      .logo-img img {
-        width: 35px !important;
-        height: 35px !important;
-      }
-      
-      .dept-img {
-        top: 8px;
-        right: 8px;
-      }
-      
-      .dept-img img {
-        width: 35px !important;
-        height: 35px !important;
-      }
-
-      .events-preview h2 {
-        font-size: 1.8rem;
-      }
-
-      .events-preview p {
-        font-size: 1rem;
-      }
-
-      .events-preview {
-        padding: 30px 20px;
-      }
-
-      .events-btn {
-        padding: 12px 25px;
-        font-size: 0.9rem;
-      }
-
-      .scroll-indicator {
-        bottom: 30px;
-        padding: 10px 12px;
-      }
-
-      .scroll-indicator div:first-child {
-        font-size: 1.5rem !important;
-      }
-
-      .scroll-indicator div:last-child {
-        font-size: 0.8rem !important;
-      }
-
-      .coordinator-card {
-        padding: 15px;
-      }
-
-      .coordinator-name {
-        font-size: 1.1rem;
-      }
-
-      .coordinator-phone {
-        font-size: 0.9rem;
-      }
-
-      .contact-box h2 {
-        font-size: 1.8rem;
-      }
-
-      .event-coordinators-title {
-        font-size: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRATA'25 - Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Fallback background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a1929 0%, #1e3a8a 50%, #1e40af 100%);
+            z-index: -3;
+        }
+
+        /* Fixed background video */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .bg-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Transparent video overlay */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .video-overlay.scrolled {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: 'Black Ops One', cursive;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px rgba(6, 182, 212, 0.4); }
+            to { text-shadow: 0 0 50px rgba(6, 182, 212, 0.6), 0 0 70px rgba(6, 182, 212, 0.3); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Fixed scroll indicator styling */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 15px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .scroll-indicator:focus {
+            outline: none;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-8px) translateX(-50%);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .logo img:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 8px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .nav-links a:hover {
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.15);
+            text-shadow: 0 0 10px #06b6d4;
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 8px;
+        }
+
+        .dept-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .dept-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Events Section */
+        .events-section {
+            min-height: 100vh;
+            background: transparent;
+            padding: 120px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .events-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-family: 'Black Ops One', cursive;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .events-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 35px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(14, 116, 144, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .event-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+
+        .event-card:hover::before {
+            opacity: 1;
+        }
+
+        .event-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover .event-image {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
+        }
+
+        .event-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .event-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .event-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-details {
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: rgba(6, 182, 212, 0.2);
+            color: white;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+        }
+
+        .btn-details::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-details:hover::before {
+            left: 100%;
+        }
+
+        .btn-details:hover {
+            background: rgba(6, 182, 212, 0.3);
+            border-color: rgba(6, 182, 212, 0.6);
+            transform: translateY(-2px);
+            color: white;
+            box-shadow: 0 8px 20px rgba(6, 182, 212, 0.2);
+        }
+
+        /* Common Register Button */
+        .register-section {
+            text-align: center;
+            margin: 60px 0;
+            padding: 0 20px;
+        }
+
+        .register-title {
+            color: white;
+            font-family: 'Black Ops One', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+        }
+
+        .register-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-register-main {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #06b6d4, #0891b2, #0e7490);
+            color: white;
+            text-decoration: none;
+            border-radius: 35px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(6, 182, 212, 0.6);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 35px rgba(6, 182, 212, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-register-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-register-main:hover::before {
+            left: 100%;
+        }
+
+        .btn-register-main:hover {
+            background: linear-gradient(135deg, #0891b2, #0e7490, #155e75);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(6, 182, 212, 0.5);
+            color: white;
+            text-decoration: none;
+            border-color: rgba(6, 182, 212, 0.8);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            margin: 20px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .modal-title {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .modal-body {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .modal-body h4 {
+            color: #06b6d4;
+            margin: 25px 0 12px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+        }
+
+        .modal-body h4:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        .modal-body strong {
+            color: #06b6d4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .events-grid-bottom {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .register-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-links li {
+                margin: 0 8px;
+            }
+            
+            .nav-links a {
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+
+            .nav-content {
+                padding: 0 15px;
+            }
+
+            .events-section {
+                padding: 100px 0 60px;
+            }
+
+            .event-card {
+                padding: 25px;
+            }
+
+            .nav-links {
+                padding: 6px 12px;
+            }
+
+            .logo img, .dept-logo img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .register-title {
+                font-size: 1.8rem;
+            }
+
+            .register-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .btn-register-main {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .event-card {
+                padding: 20px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .modal-content {
+                padding: 25px;
+                margin: 15px;
+                max-height: 90vh;
+            }
+
+            .nav-links li {
+                margin: 0 4px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+
+            .logo img, .dept-logo img {
+                width: 35px;
+                height: 35px;
+            }
+
+            .events-container {
+                padding: 0 15px;
+            }
+
+            .btn-details {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .scroll-indicator {
+                bottom: 30px;
+                padding: 10px 12px;
+            }
+
+            .scroll-indicator div:first-child {
+                font-size: 1.5rem !important;
+            }
+
+            .scroll-indicator div:last-child {
+                font-size: 0.8rem !important;
+            }
+
+            .register-section {
+                margin: 40px 0;
+            }
+
+            .register-title {
+                font-size: 1.5rem;
+            }
+
+            .register-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .btn-register-main {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                padding: 4px 8px;
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="bg-video">
-    <video autoplay muted loop playsinline>
-      <source src="hero-video.mp4" type="video/mp4"/>
-    </video>
-  </div>
+    <!-- Background Video -->
+    <div class="bg-video">
+        <video autoplay muted loop playsinline>
+            <source src="hero-video.mp4" type="video/mp4"/>
+        </video>
+    </div>
 
-  <!-- Video overlay for scroll effect -->
-  <div class="video-overlay" id="videoOverlay"></div>
+    <!-- Video overlay for scroll effect -->
+    <div class="video-overlay" id="videoOverlay"></div>
 
-  <div class="main-container">
-    <div class="logo-img">
-      <a href="https://licet.ac.in/" target="_blank">
-        <img src="Assets/img/LICET LOGO.png" alt="LICET Logo" width="70px" height="70px">
-      </a>
-    </div>
-    
-    <div class="nav-links">
-      <ul>
-        <li><a href="#home" onclick="scrollToTop()">Home</a></li>
-        <li><span class="separator">|</span></li>
-        <li><a href="#events" onclick="scrollToEvents()">Events</a></li>
-        <li><span class="separator">|</span></li>
-        <li><a href="#contact" onclick="scrollToContact()">Contact</a></li>
-      </ul>
-    </div>
-    
-    <div class="dept-img">
-      <img src="logo (1).png" alt="Department Logo" width="90px" height="90px">
-    </div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <a href="https://licet.ac.in/" target="_blank">
+                    <img src="Assets/img/LICET LOGO.png" alt="LICET Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><span class="separator">|</span></li>
+                <li><a href="#events">Events</a></li>
+                <li><span class="separator">|</span></li>
+                <li><a href="index.html#contact-container">Contact</a></li>
+            </ul>
+            <div class="dept-logo">
+                <img src="logo (1).png" alt="Department Logo">
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="home">
-      <h1 class="hero-text">STRATA'25</h1>
-      <div class="scroll-indicator" onclick="scrollToEvents()">
-        <div style="font-size: 2rem;">⬇</div>
-        <div style="font-size: 0.9rem; margin-top: 5px; font-weight: 500;">Scroll to explore</div>
-      </div>
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">EVENTS</h1>
+            <p class="hero-subtitle">Discover the exciting competitions at STRATA'25</p>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToEvents()">
+            <div style="font-size: 2rem;">⬇</div>
+            <div style="font-size: 0.9rem; margin-top: 5px; font-weight: 500;">Scroll to explore</div>
+        </div>
     </section>
 
-    <!-- Events Preview Section -->
-    <section class="events-section" id="events-preview">
-      <div class="events-preview">
-        <h2>COMPETITION ARENA</h2>
-        <p>Discover 5 exciting events designed to test your skills, creativity, and strategic thinking. Join the ultimate tech showdown!</p>
-        <a href="events.html" class="events-btn">View All Events</a>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-container" id="contact">
-      <div class="contact-box">
-        <h2>CONTACT US</h2>
-        
-        <div class="event-coordinators-title">Event Coordinators</div>
-        
-        <div class="coordinators-grid">
-          <div class="coordinator-card">
-            <div class="coordinator-name">Nithish</div>
-            <div class="coordinator-phone" onclick="copyPhone('+917418758787', this)">
-              <span class="phone-icon">📱</span>
-              <span>+91 7418758787</span>
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="events-container">
+            <h2 class="section-title">COMPETITION ARENA</h2>
+            
+            <!-- First Row - 3 Events -->
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">🎯</div>
+                    <h3 class="event-title">Shogun's Pitch</h3>
+                    <p class="event-description">Showcase your research skills and ideas with a well-crafted paper and presentation. Impress the judges with clarity, originality, and confident delivery.</p>
+                    <div class="event-buttons">
+                        <button class="btn-details" onclick="showEventDetails('shogun')">View Details</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image">⚡</div>
+                    <h3 class="event-title">Syntax Strike</h3>
+                    <p class="event-description">Hunt bugs, fix code, and crack problems across C, Python, and Java. Speed, accuracy, and problem-solving wits will crown the coding champion.</p>
+                    <div class="event-buttons">
+                        <button class="btn-details" onclick="showEventDetails('syntax')">View Details</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image">🔍</div>
+                    <h3 class="event-title">Scroll Trace</h3>
+                    <p class="event-description">See it, describe it, recreate it. Get shown an image, then craft the perfect AI prompt to generate its twin. Accuracy, creativity, and clever wording decide the victor.</p>
+                    <div class="event-buttons">
+                        <button class="btn-details" onclick="showEventDetails('scroll')">View Details</button>
+                    </div>
+                </div>
             </div>
-          </div>
-          
-          <div class="coordinator-card">
-            <div class="coordinator-name">Kishore</div>
-            <div class="coordinator-phone" onclick="copyPhone('+919342503004', this)">
-              <span class="phone-icon">📱</span>
-              <span>+91 9342503004</span>
+            
+            <!-- Second Row - 2 Events -->
+            <div class="events-grid-bottom">
+                <div class="event-card">
+                    <div class="event-image">📊</div>
+                    <h3 class="event-title">Stat Wars</h3>
+                    <p class="event-description">Analyze cricket stats, outthink rivals, and draft your dream team in a high-pressure mock auction. Data skills, budget strategy, and sharp judgment will decide the champion.</p>
+                    <div class="event-buttons">
+                        <button class="btn-details" onclick="showEventDetails('stat')">View Details</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-image">💰</div>
+                    <h3 class="event-title">Feudal Fortune</h3>
+                    <p class="event-description">Bid for futuristic patents, sabotage rivals, and fuse your winnings into the ultimate product pitch. Outwit, outbid, and outlast your opponents in this high-stakes tech showdown.</p>
+                    <div class="event-buttons">
+                        <button class="btn-details" onclick="showEventDetails('feudal')">View Details</button>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="email-section">
-          <span class="email-label">📧 Email</span>
-          <div class="email-copy-container">
-            <span class="email-text">strata@licet.ac.in</span>
-            <button class="copy-email-btn" id="copyEmailBtn" onclick="copyEmail()">
-              Copy Email
-            </button>
-          </div>
+            <!-- Common Registration Section -->
+            <div class="register-section">
+                <h3 class="register-title">READY TO COMPETE?</h3>
+                <p class="register-subtitle">Join STRATA'25 and showcase your skills in these exciting competitions. Register now to secure your spot!</p>
+                <a href="https://forms.gle/GBkyx5Zx8beoaqon6" target="_blank" class="btn-register-main">Register Now</a>
+            </div>
         </div>
-
-        <div class="contact-links">
-          <a href="https://instagram.com/strata25" target="_blank">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            Instagram
-          </a>
-          <a href="https://www.licet.ac.in" target="_blank">
-            <span>🌐</span> LICET Website
-          </a>
-        </div>
-      </div>
     </section>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function scrollToEvents() {
-      document.getElementById('events-preview').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }
+    <!-- Event Details Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Event Details</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Event details will be populated here -->
+            </div>
+        </div>
+    </div>
 
-    function scrollToTop() {
-      document.getElementById('home').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Event details data - Updated with new structures
+        const eventDetails = {
+            shogun: {
+                title: "Shogun's Pitch",
+                content: `
+                    <h4>📜 Event Overview</h4>
+                    <p>A two-round research paper presentation challenge where teams present original work, defend it with mastery, and compete for the title of the Shogun's finest scholars.</p>
+                    
+                    <h4>📋 Round 1 – Abstract & Concept</h4>
+                    <p><strong>Abstract Submission:</strong> Must be 150–300 words and submitted in .docx or .pdf format.</p>
+                    
+                    <p><strong>Abstract must include:</strong></p>
+                    <ul>
+                        <li>Title of the paper</li>
+                        <li>Author(s) name, institution, and contact details</li>
+                    </ul>
+                    
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>A participant cannot be in multiple teams for this event</li>
+                        <li>The same paper cannot be registered under multiple departments</li>
+                    </ul>
+                    
+                    <p><strong>Selection:</strong> Only shortlisted teams from Round 1 advance to Round 2. Results will be announced after Round 1.</p>
+                    
+                    <h4>🎯 Round 2 – The Shogun's Arena (Final Presentation)</h4>
+                    <p><strong>Objective:</strong> Deliver your research with mastery and defend it against the panel's questions.</p>
+                    
+                    <p><strong>Full Paper Guidelines:</strong></p>
+                    <ul>
+                        <li><strong>Length:</strong> 6–10 pages</li>
+                        <li><strong>Structure:</strong> Title page, abstract, author(s) name, institution, introduction, methodology, results/discussion, conclusion & future scope, references</li>
+                    </ul>
+                    
+                    <p><strong>Presentation:</strong></p>
+                    <ul>
+                        <li><strong>Format:</strong> PPT only</li>
+                        <li><strong>Duration:</strong> 7 minutes presentation + 3 minutes Q&A</li>
+                    </ul>
+                    
+                    <p><strong>Rules:</strong></p>
+                    <ul>
+                        <li>Participants must adhere to the time constraint</li>
+                        <li>All team members must be ready to answer questions</li>
+                        <li>Plagiarism >20% leads to disqualification</li>
+                        <li>Exceeding the time limit will affect scores</li>
+                        <li>Final paper & PPT must be submitted to the event coordinators</li>
+                    </ul>
+                    
+                    <h4>📊 Evaluation Criteria</h4>
+                    <ul>
+                        <li><strong>Content Quality</strong> – originality, depth of research, clarity</li>
+                        <li><strong>Presentation Skills</strong> – clarity, confidence, engagement</li>
+                        <li><strong>Relevance to Theme</strong> – alignment with symposium focus</li>
+                        <li><strong>Q&A Handling</strong> – ability to defend and explain your work</li>
+                    </ul>
+                    
+                    <p><strong>Judges' decision:</strong> Final and binding, no appeals allowed</p>
+                    
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 teams</li>
+                        <li>Certificates for all participants</li>
+                    </ul>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                `
+            },
+            syntax: {
+                title: "Syntax Strike",
+                content: `
+                    <h4>⚡ Event Overview</h4>
+                    <p>A 2-round coding competition where participants identify errors and solve a Movie/Series mystery, with prizes and certificates for winners and participants.</p>
+                    
+                    <h4>🔍 Round 1 – Finding Errors</h4>
+                    <p>A set of 12 code snippets will be provided:</p>
+                    <ul>
+                        <li>5 Python code snippets</li>
+                        <li>4 C programming code snippets</li>
+                        <li>3 Java code snippets</li>
+                    </ul>
+                    
+                    <p>Participants will identify errors in each code snippet.</p>
+                    <p>Participants with the best performance in Round 1 will be selected for Round 2.</p>
+                    
+                    <h4>🎬 Round 2 – Main Challenge</h4>
+                    <ul>
+                        <li>Participants who qualify will be given a general hint to identify a Movie/Series</li>
+                        <li>Along with the main question, participants will also receive additional coding challenges</li>
+                        <li>Each coding challenge solved correctly will earn points and provide a clue to the main question</li>
+                    </ul>
+                    
+                    <h4>🎁 Merchandise Surprise</h4>
+                    <p>Participants who correctly identify the Movie/Series will be rewarded with themed merchandise related to it.</p>
+                    
+                    <h4>🏆 Winners Qualification</h4>
+                    <ul>
+                        <li>The participant who correctly identifies the main question first will receive bonus points</li>
+                        <li>The top positions will be determined based on total points earned</li>
+                        <li>The top 3 winners will be awarded prizes</li>
+                    </ul>
+                    
+                    <h4>🏅 Awards</h4>
+                    <ul>
+                        <li>Winners will receive an in-hand certificate</li>
+                        <li>All participants will receive a certificate</li>
+                    </ul>
+                    
+                    <h4>📜 Rules</h4>
+                    <ul>
+                        <li>Participants must adhere to the rules and regulations of the competition</li>
+                        <li>Judges' decision is final and binding</li>
+                        <li>By participating, contestants acknowledge they have read, understood, and agreed to the rules</li>
+                    </ul>
+                    
+                    <h4>💰 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 participants</li>
+                        <li>Certificates for all participants</li>
+                    </ul>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                `
+            },
+            scroll: {
+                title: "Scroll Trace",
+                content: `
+                    <h4>👥 Eligibility & Teaming</h4>
+                    <ul>
+                        <li>Open to individuals</li>
+                        <li>Each participant must bring their own laptop</li>
+                    </ul>
+                    
+                    <h4>📋 General Guidelines</h4>
+                    <ul>
+                        <li>All prompts must be typed only in the instructed platforms—no other AI platforms (like ChatGPT, Midjourney, etc.) are allowed</li>
+                        <li>No use of mobile phones or external help during the challenge</li>
+                        <li>Judges' decisions are final and binding</li>
+                    </ul>
+                    
+                    <h4>🎯 Round 1 – Spin & Show</h4>
+                    <ul>
+                        <li><strong>Task:</strong> Spin the wheel to get a random theme</li>
+                        <li><strong>Goal:</strong> Create and display an accurate output related to the theme</li>
+                        <li><strong>Tip:</strong> Precision & creativity win points!</li>
+                    </ul>
+                    
+                    <h4>🔍 Round 2 – Secret Prompt Match</h4>
+                    <ul>
+                        <li><strong>Task:</strong> All qualified teams get one surprise topic</li>
+                        <li><strong>Goal:</strong> Write a short, specific prompt for image generation</li>
+                        <li><strong>Winning Criteria:</strong> Generated image must match host's reference output</li>
+                    </ul>
+                    
+                    <h4>📖 Round 3 – Story in Contrast</h4>
+                    <ul>
+                        <li><strong>Task:</strong> Based on the given image, create a story</li>
+                        <li><strong>Twist:</strong> Story must follow two contrast emotion keywords (e.g., Happy Ending + Mystery, Thriller + Fiction)</li>
+                        <li>Word limit applies strictly</li>
+                        <li>Round 3 will feature a suspense-filled task revealed on the spot</li>
+                        <li><strong>Goal:</strong> Blend emotions creatively while staying on theme</li>
+                    </ul>
+                    
+                    <h4>📊 Judging Criteria</h4>
+                    <ul>
+                        <li>Closeness to the original hidden prompt</li>
+                        <li>Logical reasoning & explanation</li>
+                        <li>Number of iterations used</li>
+                        <li>Prompt brevity</li>
+                        <li>Clarity & innovation</li>
+                    </ul>
+                    
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 participants</li>
+                        <li>Certificates for all participants</li>
+                    </ul>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                `
+            },
+            stat: {
+                title: "Stat Wars",
+                content: `
+                    <h4>📊 Event Overview</h4>
+                    <p>Stat Wars is a fast-paced, cricket-themed strategy event where teams dive into player data, crack smart questions, and build their dream team through a mock auction. It tests analytical thinking, time management, and decision-making under pressure.</p>
+                    
+                    <h4>🔍 Round 1 – Stat Hacker (Qualifier Round)</h4>
+                    <ul>
+                        <li>Teams will be given a cricket dataset</li>
+                        <li>Solve a mix of MCQs, quick calculations, and logic-based scenarios (on paper)</li>
+                        <li>Top 6–8 teams with the best scores qualify for the final round</li>
+                    </ul>
+                    
+                    <h4>🏏 Round 2 – Mock Auction (Final Round)</h4>
+                    <ul>
+                        <li>Qualified teams get ₹50 Cr virtual budget and a new player dataset</li>
+                        <li>Players are auctioned one by one; teams must bid wisely to build a balanced squad</li>
+                        <li>Once the auction ends, each team presents their final team and explains their choices</li>
+                        <li>Balance, strategy, and justification will affect scores</li>
+                    </ul>
+                    
+                    <h4>👥 Team Size</h4>
+                    <p>2–3 members</p>
+                    
+                    <h4>📋 Materials Provided</h4>
+                    <p>Datasets, stationery, and scoring sheets</p>
+                    
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 teams</li>
+                        <li>Certificates for all participants</li>
+                    </ul>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                `
+            },
+            feudal: {
+                title: "Feudal Fortune",
+                content: `
+                    <h4>💰 Event Overview</h4>
+                    <p><strong>Tagline:</strong> <em>Bid. Betray. Build.</em></p>
+                    <p>Step into the role of a tech warlord in a futuristic feudal era where power isn't measured in land, but in patents. This is a strategic business simulation combining auction dynamics, competitive strategy, and innovation. Your mission: Outbid, outsmart, and outpitch your rivals to claim ultimate dominance.</p>
+                    
+                    <h4>⚔️ Round 1 – The Patent Auction</h4>
+                    <ul>
+                        <li>All teams start with equal virtual credits</li>
+                        <li>Patents are revealed one at a time for bidding</li>
+                        <li>Some <strong>mystery patents</strong> will appear — only the buyer will know what they are</li>
+                        <li>Midway through, expect a surprise challenge that could give an advantage</li>
+                        <li>End of Round: Use your patents to create an innovative product idea</li>
+                        <li>The best teams from Round 1 will advance to the Final Round</li>
+                    </ul>
+                    
+                    <h4>🏴‍☠️ Round 2 – The Final Battle</h4>
+                    <ul>
+                        <li>More patents enter the auction</li>
+                        <li><strong>Sabotage opportunities</strong> are introduced — use them wisely to disrupt rivals</li>
+                        <li>Mystery elements and challenges will keep the game unpredictable</li>
+                        <li>Final task: Build your ultimate product pitch using patents from both rounds</li>
+                    </ul>
+                    
+                    <h4>📋 Event Info</h4>
+                    <ul>
+                        <li><strong>Duration:</strong> 1.5 – 2 hrs</li>
+                        <li><strong>Team Size:</strong> 2–3 members</li>
+                        <li><strong>Venue & Time:</strong> [To be announced]</li>
+                    </ul>
+                    
+                    <h4>📊 Judging Criteria</h4>
+                    <ul>
+                        <li><strong>Portfolio Value (35%)</strong> – Final patent portfolio worth</li>
+                        <li><strong>Strategic Execution (25%)</strong> – Effective use of sabotage and timing</li>
+                        <li><strong>Product Innovation (25%)</strong> – Creativity and feasibility of final pitch</li>
+                        <li><strong>Presentation Skills (15%)</strong> – Communication and persuasion</li>
+                    </ul>
+                    
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li><strong>Cash prizes</strong> for Top 3 teams</li>
+                        <li><strong>Certificates</strong> for all participants</li>
+                    </ul>
+                    
+                    <h4>📞 Event Coordinators</h4>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                    <p><strong>Name:</strong> __________ | <strong>Phone:</strong> __________</p>
+                `
+            }
+        };
 
-    function scrollToContact() {
-      document.getElementById('contact').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center'
-      });
-    }
-
-    // Phone copy functionality
-    function copyPhone(phoneNumber, element) {
-      // Remove any existing phone call functionality
-      event.preventDefault();
-      event.stopPropagation();
-      
-      navigator.clipboard.writeText(phoneNumber).then(function() {
-        // Success feedback
-        const originalColor = element.style.color;
-        element.classList.add('phone-copied');
-        
-        // Create temporary feedback
-        const originalText = element.innerHTML;
-        element.innerHTML = '<span class="phone-icon">✓</span><span>Copied!</span>';
-        
-        // Reset after 2 seconds
-        setTimeout(function() {
-          element.classList.remove('phone-copied');
-          element.innerHTML = originalText;
-        }, 2000);
-      }).catch(function(err) {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = phoneNumber;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        element.classList.add('phone-copied');
-        const originalText = element.innerHTML;
-        element.innerHTML = '<span class="phone-icon">✓</span><span>Copied!</span>';
-        
-        setTimeout(function() {
-          element.classList.remove('phone-copied');
-          element.innerHTML = originalText;
-        }, 2000);
-      });
-    }
-
-    // Email copy functionality
-    function copyEmail() {
-      const email = 'strata@licet.ac.in';
-      const button = document.getElementById('copyEmailBtn');
-      
-      // Copy to clipboard
-      navigator.clipboard.writeText(email).then(function() {
-        // Success feedback
-        button.textContent = '✓ Copied!';
-        button.classList.add('copied');
-        
-        // Reset button after 2 seconds
-        setTimeout(function() {
-          button.textContent = 'Copy Email';
-          button.classList.remove('copied');
-        }, 2000);
-      }).catch(function(err) {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = email;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-        
-        button.textContent = '✓ Copied!';
-        button.classList.add('copied');
-        
-        setTimeout(function() {
-          button.textContent = 'Copy Email';
-          button.classList.remove('copied');
-        }, 2000);
-      });
-    }
-
-    // Video overlay scroll effect with improved smoothness
-    let ticking = false;
-    
-    function updateScrollEffect() {
-      const videoOverlay = document.getElementById('videoOverlay');
-      const scrollY = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // Calculate opacity based on scroll progress
-      const scrollProgress = Math.min(scrollY / (windowHeight * 0.5), 1);
-      
-      if (scrollProgress > 0.1) {
-        videoOverlay.classList.add('scrolled');
-      } else {
-        videoOverlay.classList.remove('scrolled');
-      }
-      
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(updateScrollEffect);
-        ticking = true;
-      }
-    });
-
-    // Smooth navigation link highlighting
-    window.addEventListener('scroll', function() {
-      const sections = ['home', 'events-preview', 'contact'];
-      const navLinks = document.querySelectorAll('.nav-links a');
-      
-      let current = '';
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            current = section === 'events-preview' ? 'events' : section;
-          }
+        // Scroll to events function
+        function scrollToEvents() {
+            document.getElementById('events').scrollIntoView({
+                behavior: 'smooth'
+            });
         }
-      });
-    });
 
-    // Check URL hash on page load for direct linking
-    window.addEventListener('load', function() {
-      document.body.style.opacity = '1';
-      
-      // Handle URL fragments for direct navigation
-      const hash = window.location.hash;
-      if (hash === '#contact') {
-        setTimeout(() => {
-          scrollToContact();
-        }, 500);
-      } else if (hash === '#events') {
-        setTimeout(() => {
-          scrollToEvents();
-        }, 500);
-      }
-      
-      // Add subtle entrance animation
-      const heroText = document.querySelector('.hero-text');
-      if (heroText) {
-        heroText.style.transform = 'translateY(30px)';
-        heroText.style.opacity = '0';
+        // Show event details modal
+        function showEventDetails(eventId) {
+            const modal = document.getElementById('eventModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            const event = eventDetails[eventId];
+            if (event) {
+                modalTitle.textContent = event.title;
+                modalBody.innerHTML = event.content;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('eventModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('eventModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Video overlay and navbar scroll effects with improved performance
+        let ticking = false;
         
-        setTimeout(() => {
-          heroText.style.transition = 'all 1s ease-out';
-          heroText.style.transform = 'translateY(0)';
-          heroText.style.opacity = '0.9';
-        }, 300);
-      }
-    });
+        function updateScrollEffect() {
+            const videoOverlay = document.getElementById('videoOverlay');
+            const navbar = document.getElementById('navbar');
+            const scrollY = window.scrollY;
+            
+            // Add overlay when scrolling starts
+            if (scrollY > 50) {
+                videoOverlay.classList.add('scrolled');
+                navbar.classList.add('scrolled');
+            } else {
+                videoOverlay.classList.remove('scrolled');
+                navbar.classList.remove('scrolled');
+            }
+            
+            ticking = false;
+        }
 
-    // Handle hash changes for navigation
-    window.addEventListener('hashchange', function() {
-      const hash = window.location.hash;
-      if (hash === '#contact') {
-        scrollToContact();
-      } else if (hash === '#events') {
-        scrollToEvents();
-      } else if (hash === '#home') {
-        scrollToTop();
-      }
-    });
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffect);
+                ticking = true;
+            }
+        });
 
-    // Preload events page for faster navigation
-    const link = document.createElement('link');
-    link.rel = 'prefetch';
-    link.href = 'events.html';
-    document.head.appendChild(link);
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    // Add loading state
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease-in-out';
-  </script>
+        // Animate cards on scroll with improved performance
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100); // Stagger animation
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add loading animation
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+
+            // Observe event cards for animation
+            document.querySelectorAll('.event-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add entrance animation to hero content
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) {
+                heroContent.style.transform = 'translateY(30px)';
+                heroContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    heroContent.style.transition = 'all 1s ease-out';
+                    heroContent.style.transform = 'translateY(0)';
+                    heroContent.style.opacity = '1';
+                }, 300);
+            }
+        });
+
+        // Preload home page for faster navigation
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = 'index.html';
+        document.head.appendChild(link);
+
+        // Smooth scroll to registration section
+        function scrollToRegister() {
+            document.querySelector('.register-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+
+        // Add click handlers for event cards to show details
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make event cards clickable for better UX
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function(e) {
+                    // Don't trigger if clicking on the details button
+                    if (!e.target.closest('.btn-details')) {
+                        const detailsBtn = this.querySelector('.btn-details');
+                        if (detailsBtn) {
+                            detailsBtn.click();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-
-
