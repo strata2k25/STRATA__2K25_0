@@ -369,7 +369,37 @@
         font-size: 0.95rem;
         line-height: 1.6;
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
+      }
+
+      .event-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding: 12px 16px;
+        background: rgba(6, 182, 212, 0.1);
+        border-radius: 15px;
+        border: 1px solid rgba(6, 182, 212, 0.2);
+      }
+
+      .event-time, .event-venue {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        font-size: 0.85rem;
+      }
+
+      .event-time .icon, .event-venue .icon {
+        font-size: 1.2rem;
+        margin-bottom: 4px;
+        color: #06b6d4;
+      }
+
+      .event-time .text, .event-venue .text {
+        font-weight: 500;
+        text-align: center;
       }
 
       .event-buttons {
@@ -695,6 +725,15 @@
           padding: 15px 35px;
           font-size: 1.1rem;
         }
+
+        .event-info {
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .event-time, .event-venue {
+          font-size: 0.8rem;
+        }
       }
 
       @media (max-width: 480px) {
@@ -849,54 +888,16 @@
               and presentation. Impress the judges with clarity, originality
               and confident delivery.
             </p>
-            <div class="event-buttons">
-              <button class="btn-details" onclick="showEventDetails('shogun')">
-                View Details
-              </button>
+            <div class="event-info">
+              <div class="event-time">
+                <div class="icon">🕙</div>
+                <div class="text">10:00 AM - 12:00 PM</div>
+              </div>
+              <div class="event-venue">
+                <div class="icon">📍</div>
+                <div class="text">G31</div>
+              </div>
             </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-image">⚡</div>
-            <h3 class="event-title">Syntax Strike</h3>
-            <p class="event-description">
-              Hunt bugs, fix code and crack problems across C, Python and
-              Java. Speed, accuracy and problem-solving wits will crown the
-              coding champion.
-            </p>
-            <div class="event-buttons">
-              <button class="btn-details" onclick="showEventDetails('syntax')">
-                View Details
-              </button>
-            </div>
-          </div>
-
-          <div class="event-card">
-            <div class="event-image">🔍</div>
-            <h3 class="event-title">Scroll Trace</h3>
-            <p class="event-description">
-              See it, describe it, recreate it. Get shown an image, then craft
-              the perfect AI prompt to generate its twin. Accuracy, creativity
-              and clever wording decide the victor.
-            </p>
-            <div class="event-buttons">
-              <button class="btn-details" onclick="showEventDetails('scroll')">
-                View Details
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Second Row - 2 Events -->
-        <div class="events-grid-bottom">
-          <div class="event-card">
-            <div class="event-image">📊</div>
-            <h3 class="event-title">Stat Wars</h3>
-            <p class="event-description">
-              Analyze cricket stats, outthink rivals and draft your dream team
-              in a high-pressure mock auction. Data skills, budget strategy and
-              sharp judgment will decide the champion.
-            </p>
             <div class="event-buttons">
               <button class="btn-details" onclick="showEventDetails('stat')">
                 View Details
@@ -912,6 +913,16 @@
               winnings into the ultimate product pitch. Outwit, outbid and
               outlast your opponents in this high-stakes tech showdown.
             </p>
+            <div class="event-info">
+              <div class="event-time">
+                <div class="icon">🕙</div>
+                <div class="text">12:30 PM - 2:30 PM</div>
+              </div>
+              <div class="event-venue">
+                <div class="icon">📍</div>
+                <div class="text">G31</div>
+              </div>
+            </div>
             <div class="event-buttons">
               <button class="btn-details" onclick="showEventDetails('feudal')">
                 View Details
@@ -952,7 +963,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Event details data - Updated with new structures
+      // Event details data - Updated with timings and venues
       const eventDetails = {
         shogun: {
           title: "Shogun's Pitch",
@@ -961,10 +972,13 @@
                     <p>A research paper presentation challenge where teams present original work, defend it with mastery and compete for the title of the Shogun's finest scholars.</p>
                     <p> <i> <strong>Candidates Must Mail their presentation and papers in IEEE format on or before 21-08-2025</strong></i></p>
                                    
-                    
-                                    
+                    <h4>🕙 Timings & Venue:</h4>
+                    <ul>
+                        <li><strong>Time:</strong> 10:00 AM to 12:00 PM</li>
+                        <li><strong>Venue:</strong> G31</li>
+                        <li>Students are requested to assemble at the venue 30 minutes prior to the mentioned timings.</li>
+                    </ul>
                
-                                
                     <h4>🎯 Round 1 – The Shogun's Arena </h4>
                     <p><strong>Objective:</strong> Deliver your research with mastery and defend it against the panel's questions.</p>
                     
@@ -1010,12 +1024,6 @@
                 
                     
                     <p><strong>Judges' decision:</strong> Final and binding, no appeals allowed</p>
-
-                    <h4>🕙 Timings:</h4>
-                    <ul>
-                        <li><strong> 10:00 AM to 12:00 PM </strong></li>
-                        <li>Students are requested to assemble at the venue 30 minutes prior to the mentioned timings. </li>
-                    </ul>
                     
                     <h4>🏆 Prizes</h4>
                     <ul>
@@ -1034,6 +1042,13 @@
                     <h4>⚡ Event Overview</h4>
                     <p>A 2-round coding competition where participants identify errors and solve a Movie/Series mystery  with prizes and certificates for winners and participants.</p>
                     
+                    <h4>🕙 Timings & Venue:</h4>
+                    <ul>
+                        <li><strong>Time:</strong> 12:30 PM to 2:30 PM</li>
+                        <li><strong>Venue:</strong> B22 (Lab)</li>
+                        <li>Students are requested to assemble at the venue 30 minutes prior to the mentioned timings.</li>
+                    </ul>
+                    
                     <h4>🔍 Round 1 – Finding Errors</h4>
                     <p>A set of 12 code snippets will be provided:</p>
                     <ul>
@@ -1051,7 +1066,7 @@
                         <li>participants will given set of coding challenges.</li>
                         <li> ⁠Each coding challenge solved correctly will earn points and provide a clue to complete the event.</li>
                         <li> ⁠Participants who solved correctly or find out the mystery will win.</li>
-                        <li> ⁠ if no one find out then the participant with higher points will declared as winner.</li>
+                        <li> ⁠ if no one find out then the participant with higher points will declared as winner.</li>
                     </ul>
                     
                     <h4>📜 Rules</h4>
@@ -1061,6 +1076,11 @@
                         <li>By participating, contestants acknowledge they have read, understood and agreed to the rules</li>
                     </ul>
                     
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 participants</li>
+                        <li>Participation Certificates will be provided</li>
+                    </ul>
                     
                     <h4>📞 Event Coordinators</h4>
                     <p><strong>Name:</strong> Dalbert Joe J | <strong>Phone:</strong> +91 9566687085</p>
@@ -1070,6 +1090,15 @@
         scroll: {
           title: "Scroll Trace",
           content: `
+                    <h4>🔍 Event Overview</h4>
+                    <p>See it, describe it, recreate it. Get shown an image, then craft the perfect AI prompt to generate its twin. Accuracy, creativity and clever wording decide the victor.</p>
+                    
+                    <h4>🕙 Timings & Venue:</h4>
+                    <ul>
+                        <li><strong>Time:</strong> 11:00 AM to 1:00 PM</li>
+                        <li><strong>Venue:</strong> B22 (Lab)</li>
+                        <li>Students are requested to assemble at the venue 30 minutes prior to the mentioned timings.</li>
+                    </ul>
                     
                     <h4>📋 General Guidelines</h4>
                     <ul>
@@ -1119,6 +1148,13 @@
                     <h4>📊 Event Overview</h4>
                     <p>Stat Wars is a fast-paced, cricket-themed strategy event where teams dive into player data, crack smart questions and build their dream team through a mock auction. It tests how well participants can think analytically, manage time and make sharp decisions under pressure.</p>
                     
+                    <h4>🕙 Timings & Venue:</h4>
+                    <ul>
+                        <li><strong>Time:</strong> 11:00 AM to 1:00 PM</li>
+                        <li><strong>Venue:</strong> G32</li>
+                        <li>Students are requested to assemble at the venue 30 minutes prior to the mentioned timings.</li>
+                    </ul>
+                    
             <h4>General Rules</h4>
                     <ul>
                         <li> 👥 Each team must consist of 2–3 members from the same or different departments.</li>
@@ -1154,6 +1190,13 @@ deadline.</li>
                 
                      <h4>📋Things to Bring</h4>
                      <p>Each team must bring one laptop to participate in the event.</p>
+                     
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 teams</li>
+                        <li>Participation Certificates will be provided</li>
+                    </ul>
+                     
                     <h4>📞 Event Coordinators</h4>
                     <p><strong>Name:</strong> Dario J | <strong>Phone:</strong> +91 9487369647</p>
                     <p><strong>Name:</strong> Jeff Reuben S I | <strong>Phone:</strong> +91 9361723844</p>
@@ -1165,6 +1208,13 @@ deadline.</li>
                     <h4>💰 Event Overview</h4>
                     <p><strong>Tagline:</strong> <em>Bid. Betray. Build.</em></p>
                     <p>A high-energy, strategy event mixing patent auctions, sabotage  and creative pitching. Teams act as tech warlords in a futuristic feudal era, where patents decide power.</p>
+                    
+                    <h4>🕙 Timings & Venue:</h4>
+                    <ul>
+                        <li><strong>Time:</strong> 12:30 PM to 2:30 PM</li>
+                        <li><strong>Venue:</strong> G31</li>
+                        <li>Students are requested to assemble at the venue 30 minutes prior to the mentioned timings.</li>
+                    </ul>
                     
                     <h4>⚔️ Round 1 – Auction & Mini-Game</h4>
                     <ul>
@@ -1179,8 +1229,8 @@ deadline.</li>
                     
                     <h4>🏴‍☠️ Round 2 – The Final Battle</h4>
                     <ul>
-                        <li> Expose – Reveal a rival’s mystery patent</li>
-                        <li> Pillage – Cut rival’s credits by 25%</li>
+                        <li> Expose – Reveal a rival's mystery patent</li>
+                        <li> Pillage – Cut rival's credits by 25%</li>
                         <li>Patent Theft – Steal random patent</li>
                         <li>Decoy Drop – Swap patents with another team</li>
                         <li>Credit Drain – All rivals lose 10% credits</li>
@@ -1191,8 +1241,13 @@ deadline.</li>
                     <h4>📋 Event Info</h4>
                     <ul>
                         <li>Team Size: 2–3</li>
-                        <li>Event time :</li>
-                        <li>Requirements:</li>
+                        <li>Requirements: Creativity, strategic thinking, presentation skills</li>
+                    </ul>
+
+                    <h4>🏆 Prizes</h4>
+                    <ul>
+                        <li>Cash prizes for Top 3 teams</li>
+                        <li>Participation Certificates will be provided</li>
                     </ul>
 
                     <h4>📞 Event Coordinators</h4>
@@ -1365,4 +1420,82 @@ deadline.</li>
       });
     </script>
   </body>
-</html>
+</html>="btn-details" onclick="showEventDetails('shogun')">
+                View Details
+              </button>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-image">⚡</div>
+            <h3 class="event-title">Syntax Strike</h3>
+            <p class="event-description">
+              Hunt bugs, fix code and crack problems across C, Python and
+              Java. Speed, accuracy and problem-solving wits will crown the
+              coding champion.
+            </p>
+            <div class="event-info">
+              <div class="event-time">
+                <div class="icon">🕙</div>
+                <div class="text">12:30 PM - 2:30 PM</div>
+              </div>
+              <div class="event-venue">
+                <div class="icon">📍</div>
+                <div class="text">B22 (Lab)</div>
+              </div>
+            </div>
+            <div class="event-buttons">
+              <button class="btn-details" onclick="showEventDetails('syntax')">
+                View Details
+              </button>
+            </div>
+          </div>
+
+          <div class="event-card">
+            <div class="event-image">🔍</div>
+            <h3 class="event-title">Scroll Trace</h3>
+            <p class="event-description">
+              See it, describe it, recreate it. Get shown an image, then craft
+              the perfect AI prompt to generate its twin. Accuracy, creativity
+              and clever wording decide the victor.
+            </p>
+            <div class="event-info">
+              <div class="event-time">
+                <div class="icon">🕙</div>
+                <div class="text">11:00 AM - 1:00 PM</div>
+              </div>
+              <div class="event-venue">
+                <div class="icon">📍</div>
+                <div class="text">B22 (Lab)</div>
+              </div>
+            </div>
+            <div class="event-buttons">
+              <button class="btn-details" onclick="showEventDetails('scroll')">
+                View Details
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Row - 2 Events -->
+        <div class="events-grid-bottom">
+          <div class="event-card">
+            <div class="event-image">📊</div>
+            <h3 class="event-title">Stat Wars</h3>
+            <p class="event-description">
+              Analyze cricket stats, outthink rivals and draft your dream team
+              in a high-pressure mock auction. Data skills, budget strategy and
+              sharp judgment will decide the champion.
+            </p>
+            <div class="event-info">
+              <div class="event-time">
+                <div class="icon">🕙</div>
+                <div class="text">11:00 AM - 1:00 PM</div>
+              </div>
+              <div class="event-venue">
+                <div class="icon">📍</div>
+                <div class="text">G32</div>
+              </div>
+            </div>
+            <div class="event-buttons">
+              <button class
